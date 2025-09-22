@@ -8,13 +8,13 @@ gsap.registerPlugin(ScrollTrigger);
 
 const Credits = () => {
   const creditsRef = useRef(null);
-  
+
   useEffect(() => {
     gsap.fromTo(
       creditsRef.current,
       {
         opacity: 0,
-        y: 20
+        y: 20,
       },
       {
         opacity: 1,
@@ -25,26 +25,26 @@ const Credits = () => {
           trigger: "#credits",
           start: "top 95%",
           end: "bottom 90%",
-          toggleActions: "play none none reverse"
-        }
+          toggleActions: "play none none reverse",
+        },
       }
     );
-    
+
     return () => {
-      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
     };
   }, []);
-  
+
   return (
     <div id="credits" ref={creditsRef}>
       <div className="ending-credits">
         <SideNavBar />
-        <a 
-          href="https://github.com/rafsanahmed28/rafsan"
+        <a
+          href="https://github.com/JESSICA047/Data_Science_Portfolio"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Designed & Built by Rafsan Ahmed © 2025
+          Designed & Built by Jessica Adzoyi © 2025
         </a>
       </div>
     </div>

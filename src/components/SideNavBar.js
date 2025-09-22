@@ -6,51 +6,75 @@ import { gsap } from "gsap";
 export default function SideNavBar({ showStars, setShowStars }) {
   const sideNavRef = useRef(null);
   const iconsRef = useRef([]);
-  
+
   useEffect(() => {
     if (sideNavRef.current) {
-      gsap.set(sideNavRef.current, { 
+      gsap.set(sideNavRef.current, {
         autoAlpha: 1,
-        y: 0
+        y: 0,
       });
-      
-      gsap.set(iconsRef.current, { 
-        autoAlpha: 0, 
+
+      gsap.set(iconsRef.current, {
+        autoAlpha: 0,
         y: -20,
-        x: -10
+        x: -10,
       });
-      
+
       gsap.to(iconsRef.current, {
         autoAlpha: 1,
         y: 0,
         x: 0,
         duration: 0.5,
         stagger: 0.1,
-        ease: "back.out(1.4)", 
-        delay: 0.9
+        ease: "back.out(1.4)",
+        delay: 0.9,
       });
     }
   }, []);
-  
+
   const addToRefs = (el) => {
     if (el && !iconsRef.current.includes(el)) {
       iconsRef.current.push(el);
     }
   };
-  
+
   return (
     <div className="side-navbar" ref={sideNavRef}>
-      <a href="https://github.com/rafsanahmed28" title="GitHub" target="_blank" rel="noopener noreferrer" ref={addToRefs}>
-        <Icon name="GitHub" className="sidenav-icon"/>
+      <a
+        href="https://github.com/JESSICA047"
+        title="GitHub"
+        target="_blank"
+        rel="noopener noreferrer"
+        ref={addToRefs}
+      >
+        <Icon name="GitHub" className="sidenav-icon" />
       </a>
-      <a href="https://www.linkedin.com/in/rafsanahmed28/" title="LinkedIn" target="_blank" rel="noopener noreferrer" ref={addToRefs}>
-        <Icon name="Linkedin" className="sidenav-icon"/>
+      <a
+        href="https://www.linkedin.com/in/dziedzorm0/"
+        title="LinkedIn"
+        target="_blank"
+        rel="noopener noreferrer"
+        ref={addToRefs}
+      >
+        <Icon name="Linkedin" className="sidenav-icon" />
       </a>
-      <a href="https://medium.com/@rafsanahmed2828" title="Medium" target="_blank" rel="noopener noreferrer" ref={addToRefs}>
-        <Icon name="Medium" className="sidenav-icon"/>
+      <a
+        href="https://medium.com/@jessicaadzoyi04"
+        title="Medium"
+        target="_blank"
+        rel="noopener noreferrer"
+        ref={addToRefs}
+      >
+        <Icon name="Medium" className="sidenav-icon" />
       </a>
-      <a href="mailto:rafsanahmed2828@gmail.com" title="Email" target="_blank" rel="noopener noreferrer" ref={addToRefs}>
-        <Icon name="Email" className="sidenav-icon"/>
+      <a
+        href="mailto:jadzoyi.work@gmail.com"
+        title="Email"
+        target="_blank"
+        rel="noopener noreferrer"
+        ref={addToRefs}
+      >
+        <Icon name="Email" className="sidenav-icon" />
       </a>
       <div className="side-navbar-divider" ref={addToRefs}></div>
       <button
@@ -58,7 +82,8 @@ export default function SideNavBar({ showStars, setShowStars }) {
         onClick={() => setShowStars((prev) => !prev)}
         title={showStars ? "Disable Background" : "Enable Background"}
         type="button"
-        ref={addToRefs}>
+        ref={addToRefs}
+      >
         <Icon name="Star" />
       </button>
     </div>

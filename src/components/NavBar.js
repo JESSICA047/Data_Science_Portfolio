@@ -14,7 +14,7 @@ class NavBar extends React.Component {
       lastScrollY: window.scrollY,
       atTop: window.scrollY === 0,
       showStars: props.showStars || false,
-      mobileMenuOpen: false
+      mobileMenuOpen: false,
     };
     this.handleScroll = this.handleScroll.bind(this);
     this.toggleStars = this.toggleStars.bind(this);
@@ -22,15 +22,14 @@ class NavBar extends React.Component {
     this.mobileMenuRef = React.createRef();
     this.hamburgerRef = React.createRef();
     this.navbarRef = React.createRef();
-    this.navLinksRef = []; 
-    this.mobileNavLinksRef = []; 
+    this.navLinksRef = [];
+    this.mobileNavLinksRef = [];
     this.addToDesktopNavRefs = this.addToDesktopNavRefs.bind(this);
     this.addToMobileNavRefs = this.addToMobileNavRefs.bind(this);
     this.logoRef = React.createRef();
     this.initialRenderComplete = false;
     this.starButtonRef = React.createRef();
     this.logoRef = React.createRef();
-
   }
 
   addToDesktopNavRefs(el) {
@@ -46,32 +45,47 @@ class NavBar extends React.Component {
   }
 
   toggleStars() {
-    if (typeof this.props.setShowStars === 'function') {
-      this.props.setShowStars(prev => !prev);
+    if (typeof this.props.setShowStars === "function") {
+      this.props.setShowStars((prev) => !prev);
     } else {
-      this.setState(prevState => ({
-        showStars: !prevState.showStars
+      this.setState((prevState) => ({
+        showStars: !prevState.showStars,
       }));
     }
   }
 
   toggleMobileMenu() {
     const { mobileMenuOpen } = this.state;
-    
+
     this.setState({ mobileMenuOpen: !mobileMenuOpen });
-    
+
     if (!mobileMenuOpen) {
-      gsap.to(this.mobileMenuRef.current, { x: 0, duration: 0.4, ease: "power3.out" });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-1'), { rotation: 45, y: 8, duration: 0.3 });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-2'), { opacity: 0, duration: 0.3 });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-3'), { rotation: -45, y: -8, duration: 0.3 });
-      
-      gsap.set(this.mobileNavLinksRef, { 
-        autoAlpha: 0, 
-        y: -15,
-        x: -10
+      gsap.to(this.mobileMenuRef.current, {
+        x: 0,
+        duration: 0.4,
+        ease: "power3.out",
       });
-      
+      gsap.to(this.hamburgerRef.current.querySelector(".line-1"), {
+        rotation: 45,
+        y: 8,
+        duration: 0.3,
+      });
+      gsap.to(this.hamburgerRef.current.querySelector(".line-2"), {
+        opacity: 0,
+        duration: 0.3,
+      });
+      gsap.to(this.hamburgerRef.current.querySelector(".line-3"), {
+        rotation: -45,
+        y: -8,
+        duration: 0.3,
+      });
+
+      gsap.set(this.mobileNavLinksRef, {
+        autoAlpha: 0,
+        y: -15,
+        x: -10,
+      });
+
       gsap.to(this.mobileNavLinksRef, {
         autoAlpha: 1,
         y: 0,
@@ -79,13 +93,28 @@ class NavBar extends React.Component {
         duration: 0.6,
         stagger: 0.12,
         ease: "back.out(1.2)",
-        delay: 0.2
+        delay: 0.2,
       });
     } else {
-      gsap.to(this.mobileMenuRef.current, { x: '100%', duration: 0.4, ease: "power3.in" });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-1'), { rotation: 0, y: 0, duration: 0.3 });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-2'), { opacity: 1, duration: 0.3 });
-      gsap.to(this.hamburgerRef.current.querySelector('.line-3'), { rotation: 0, y: 0, duration: 0.3 });
+      gsap.to(this.mobileMenuRef.current, {
+        x: "100%",
+        duration: 0.4,
+        ease: "power3.in",
+      });
+      gsap.to(this.hamburgerRef.current.querySelector(".line-1"), {
+        rotation: 0,
+        y: 0,
+        duration: 0.3,
+      });
+      gsap.to(this.hamburgerRef.current.querySelector(".line-2"), {
+        opacity: 1,
+        duration: 0.3,
+      });
+      gsap.to(this.hamburgerRef.current.querySelector(".line-3"), {
+        rotation: 0,
+        y: 0,
+        duration: 0.3,
+      });
     }
   }
 
@@ -93,43 +122,44 @@ class NavBar extends React.Component {
     window.addEventListener("scroll", this.handleScroll);
 
     if (this.navbarRef.current) {
-      this.navbarRef.current.style.visibility = 'hidden';
+      this.navbarRef.current.style.visibility = "hidden";
     }
-    
-    gsap.set(this.mobileMenuRef.current, { x: '100%' });
-    
+
+    gsap.set(this.mobileMenuRef.current, { x: "100%" });
+
     gsap.fromTo(
       this.logoRef.current,
       { autoAlpha: 0, y: -10, x: -5 },
-      { 
+      {
         autoAlpha: 1,
         x: 0,
         y: 0,
         duration: 0.2,
         stagger: 0.08,
         ease: "back.out(1.2)",
-        delay: 0.6
+        delay: 0.6,
       }
     );
-    
+
     gsap.fromTo(
-      this.navbarRef.current, 
+      this.navbarRef.current,
       { opacity: 0, y: -15 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: 0.6, 
-        ease: "power2.out", 
-        onComplete: () => gsap.set(this.navbarRef.current, { clearProps: "all" }),
+      {
+        opacity: 1,
+        y: 0,
+        duration: 0.6,
+        ease: "power2.out",
+        onComplete: () =>
+          gsap.set(this.navbarRef.current, { clearProps: "all" }),
       }
     );
-    
-    gsap.set(this.navLinksRef, { 
-      autoAlpha: 0, 
+
+    gsap.set(this.navLinksRef, {
+      autoAlpha: 0,
       y: -10,
-      x: -5
+      x: -5,
     });
-    
+
     gsap.to(this.navLinksRef, {
       autoAlpha: 1,
       y: 0,
@@ -137,36 +167,38 @@ class NavBar extends React.Component {
       duration: 0.4,
       stagger: 0.08,
       ease: "back.out(1.2)",
-      delay: 0.6
+      delay: 0.6,
     });
 
-    gsap.fromTo(this.starButtonRef.current,
-      { 
-        autoAlpha: 0, 
+    gsap.fromTo(
+      this.starButtonRef.current,
+      {
+        autoAlpha: 0,
         y: -15,
       },
-      { 
-        autoAlpha: 1,
-        y: 0,
-        duration: 0.3,
-        stagger: 0.07, 
-        ease: "back.out(1.7)", 
-        delay: 0.8
-      }
-    );
-
-    gsap.fromTo(this.hamburgerRef.current,
-      { 
-        autoAlpha: 0, 
-        y: -15,
-      },
-      { 
+      {
         autoAlpha: 1,
         y: 0,
         duration: 0.3,
         stagger: 0.07,
         ease: "back.out(1.7)",
-        delay: 1.4
+        delay: 0.8,
+      }
+    );
+
+    gsap.fromTo(
+      this.hamburgerRef.current,
+      {
+        autoAlpha: 0,
+        y: -15,
+      },
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration: 0.3,
+        stagger: 0.07,
+        ease: "back.out(1.7)",
+        delay: 1.4,
       }
     );
   }
@@ -189,7 +221,10 @@ class NavBar extends React.Component {
 
   render() {
     const { show, atTop, mobileMenuOpen } = this.state;
-    const showStars = this.props.showStars !== undefined ? this.props.showStars : this.state.showStars;
+    const showStars =
+      this.props.showStars !== undefined ?
+        this.props.showStars
+      : this.state.showStars;
 
     return (
       <Navbar
@@ -199,45 +234,62 @@ class NavBar extends React.Component {
         className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}${atTop ? " navbar-at-top" : ""}`}
         style={{ zIndex: 1000 }}
       >
-        <Container fluid style={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+        <Container
+          fluid
+          style={{
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        >
           <Navbar.Brand href="Home" style={{ marginRight: "auto" }}>
             <div className="logo-container btn-effect" ref={this.logoRef}>
-              <img 
+              <img
                 className="logo"
                 src="/assets/logo.png"
-                alt="Rafsan Ahmed Logo"
+                alt="Jessica Adzoyi Logo"
                 title="Logo"
                 style={{ height: "36px", width: "36px" }}
               />
             </div>
           </Navbar.Brand>
-          
+
           <div className="desktop-nav">
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#about" ref={this.addToDesktopNavRefs}>About</Nav.Link>
-                <Nav.Link href="#projects" ref={this.addToDesktopNavRefs}>Projects</Nav.Link>
-                <Nav.Link href="#timeline" ref={this.addToDesktopNavRefs}>Timeline</Nav.Link>
-                <Nav.Link href="#experience" ref={this.addToDesktopNavRefs}>Experience</Nav.Link>
-                <Nav.Link href="#contact" ref={this.addToDesktopNavRefs}>Contact</Nav.Link>
+                <Nav.Link href="#about" ref={this.addToDesktopNavRefs}>
+                  About
+                </Nav.Link>
+                <Nav.Link href="#projects" ref={this.addToDesktopNavRefs}>
+                  Projects
+                </Nav.Link>
+                <Nav.Link href="#timeline" ref={this.addToDesktopNavRefs}>
+                  Timeline
+                </Nav.Link>
+                <Nav.Link href="#experience" ref={this.addToDesktopNavRefs}>
+                  Experience
+                </Nav.Link>
+                <Nav.Link href="#contact" ref={this.addToDesktopNavRefs}>
+                  Contact
+                </Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </div>
-          
+
           <div className="mobile-controls">
-              <button
-                className={`star-btn navbar-star-btn${showStars ? " star-active" : ""}`}
-                onClick={this.toggleStars}
-                ref={this.starButtonRef}
-                title={showStars ? "Disable Background" : "Enable Background"}
-                type="button"
-              >
-                <Icon name="Star" />
-              </button>
-            
+            <button
+              className={`star-btn navbar-star-btn${showStars ? " star-active" : ""}`}
+              onClick={this.toggleStars}
+              ref={this.starButtonRef}
+              title={showStars ? "Disable Background" : "Enable Background"}
+              type="button"
+            >
+              <Icon name="Star" />
+            </button>
+
             <div className="navbar-mobile-divider"></div>
-            
-            <button 
+
+            <button
               className={`hamburger-menu ${mobileMenuOpen ? "active" : ""}`}
               ref={this.hamburgerRef}
               onClick={this.toggleMobileMenu}
@@ -247,17 +299,47 @@ class NavBar extends React.Component {
               <span className="line line-3"></span>
             </button>
           </div>
-          
-          <div 
+
+          <div
             className={`mobile-menu${mobileMenuOpen ? " open" : ""}`}
             ref={this.mobileMenuRef}
           >
             <Nav className="mobile-nav-links">
-              <Nav.Link href="#about" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>About</Nav.Link>
-              <Nav.Link href="#projects" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>Projects</Nav.Link>
-              <Nav.Link href="#timeline" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>Timeline</Nav.Link>
-              <Nav.Link href="#experience" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>Experience</Nav.Link>
-              <Nav.Link href="#contact" onClick={this.toggleMobileMenu} ref={this.addToMobileNavRefs}>Contact</Nav.Link>
+              <Nav.Link
+                href="#about"
+                onClick={this.toggleMobileMenu}
+                ref={this.addToMobileNavRefs}
+              >
+                About
+              </Nav.Link>
+              <Nav.Link
+                href="#projects"
+                onClick={this.toggleMobileMenu}
+                ref={this.addToMobileNavRefs}
+              >
+                Projects
+              </Nav.Link>
+              <Nav.Link
+                href="#timeline"
+                onClick={this.toggleMobileMenu}
+                ref={this.addToMobileNavRefs}
+              >
+                Timeline
+              </Nav.Link>
+              <Nav.Link
+                href="#experience"
+                onClick={this.toggleMobileMenu}
+                ref={this.addToMobileNavRefs}
+              >
+                Experience
+              </Nav.Link>
+              <Nav.Link
+                href="#contact"
+                onClick={this.toggleMobileMenu}
+                ref={this.addToMobileNavRefs}
+              >
+                Contact
+              </Nav.Link>
             </Nav>
           </div>
         </Container>
