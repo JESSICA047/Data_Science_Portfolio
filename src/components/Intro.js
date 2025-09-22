@@ -5,235 +5,164 @@ import Icon from "./Icons";
 import { gsap } from "gsap";
 
 const Intro = () => {
-  const cursorRef = useRef(null);
-  const subtitleRef = useRef(null);
+  const headerRef = useRef(null);
+  const taglineRef = useRef(null);
   const descRef = useRef(null);
+  const statsRef = useRef(null);
   const buttonsRef = useRef(null);
-  const animationRef = useRef(null);
-  const textRef = useRef(null);
-  const nameRef = useRef(null);
+  const robotRef = useRef(null);
+  const dataVisualsRef = useRef(null);
   const hasRunRef = useRef(false);
-  const animationStartedRef = useRef(false);
 
   useEffect(() => {
     if (hasRunRef.current) return;
     hasRunRef.current = true;
 
-    gsap.set([subtitleRef.current, descRef.current, buttonsRef.current], {
+    // Set initial states
+    gsap.set([headerRef.current, taglineRef.current, descRef.current, statsRef.current, buttonsRef.current], {
       opacity: 0,
-      y: 20,
+      y: 30,
     });
 
-    gsap.set(animationRef.current, {
+    gsap.set(robotRef.current, {
       opacity: 0,
-      scale: 0.95,
+      scale: 0.8,
+      rotation: -10,
     });
 
-    gsap.to([subtitleRef.current, descRef.current, buttonsRef.current], {
+    gsap.set(dataVisualsRef.current.children, {
+      opacity: 0,
+      scale: 0.5,
+    });
+
+    // Animate in sequence
+    const tl = gsap.timeline();
+
+    tl.to(headerRef.current, {
       opacity: 1,
       y: 0,
-      duration: 0.4,
-      stagger: 0.6,
+      duration: 0.8,
       ease: "power2.out",
-      delay: 0.6,
-    });
-
-    gsap.to(animationRef.current, {
+    })
+    .to(taglineRef.current, {
       opacity: 1,
-      scale: 1,
+      y: 0,
       duration: 0.6,
       ease: "power2.out",
-      delay: 0.6,
-    });
+    }, "-=0.3")
+    .to(descRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    }, "-=0.2")
+    .to(statsRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    }, "-=0.2")
+    .to(buttonsRef.current, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: "power2.out",
+    }, "-=0.2")
+    .to(robotRef.current, {
+      opacity: 1,
+      scale: 1,
+      rotation: 0,
+      duration: 0.8,
+      ease: "back.out(1.7)",
+    }, "-=0.4")
+    .to(dataVisualsRef.current.children, {
+      opacity: 1,
+      scale: 1,
+      duration: 0.5,
+      stagger: 0.1,
+      ease: "back.out(1.7)",
+    }, "-=0.3");
 
-    if (document.fonts) {
-      document.fonts.ready.then(() => {
-        if (!animationStartedRef.current) {
-          animationStartedRef.current = true;
-          startTextAnimation();
-        }
-      });
-
-      setTimeout(() => {
-        if (!animationStartedRef.current) {
-          animationStartedRef.current = true;
-          startTextAnimation();
-        }
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        startTextAnimation();
-      }, 500);
-    }
-
-    function startTextAnimation() {
-      const introText = textRef.current.textContent;
-      const nameText = nameRef.current.textContent;
-
-      textRef.current.textContent = "";
-      nameRef.current.textContent = "";
-
-      const introChars = introText.split("").map((char) => {
-        const span = document.createElement("span");
-        span.textContent = char;
-        span.style.opacity = "0";
-        textRef.current.appendChild(span);
-        return span;
-      });
-
-      const nameChars = nameText.split("").map((char) => {
-        const span = document.createElement("span");
-        span.textContent = char;
-        span.style.opacity = "0";
-        nameRef.current.appendChild(span);
-        return span;
-      });
-
-      const allChars = [...introChars, ...nameChars];
-      const windmill = cursorRef.current.querySelector("svg");
-
-      gsap.set(cursorRef.current, {
-        opacity: 1,
-        left: -10,
-        top: "50%",
-        xPercent: 0,
-        yPercent: -50,
-      });
-
-      const typingTl = gsap.timeline();
-
-      gsap.to(windmill, {
-        rotation: 360 * 7.5,
-        duration: 3,
-        ease: "linear",
-        repeat: -1,
-        transformOrigin: "center center",
-      });
-
-      document.body.offsetHeight;
-
-      allChars.forEach((char, index) => {
-        const charWidth = char.getBoundingClientRect().width || 10;
-
-        typingTl.to(cursorRef.current, {
-          left: `+=${charWidth}`,
-          duration: 0.08,
-          ease: "none",
-          onStart: () => {
-            gsap.to(char, {
-              opacity: 1,
-              duration: 0.1,
-            });
-          },
-        });
-      });
-
-      typingTl.to(cursorRef.current, {
-        left: "+=20",
-        duration: 0.1,
-        ease: "power1.out",
-      });
-
-      typingTl.add(() => {
-        gsap.killTweensOf(windmill);
-        gsap.to(windmill, {
-          rotation: "+=385",
-          duration: 0.9,
-          ease: "power2.Out",
-          transformOrigin: "center center",
-        });
-      });
-    }
-
-    return () => {
-      gsap.killTweensOf([
-        subtitleRef.current,
-        descRef.current,
-        buttonsRef.current,
-        animationRef.current,
-      ]);
-    };
   }, []);
 
   return (
-    <div className="intro-section" id="home">
+    <div className="intro-section">
       <div className="intro-content">
-        <div className="typist-content">
-          <div
-            className="text-typing-container"
-            style={{ position: "relative" }}
-          >
-            <span className="intro-title" ref={textRef}>
-              Hi there! I'm{" "}
-            </span>
-            <span className="intro-name" ref={nameRef}>
-              Jessica.
-            </span>
+        <div className="intro-header" ref={headerRef}>
+          <span className="intro-greeting">👋 Hi there, I'm</span>
+          <h1 className="intro-name">
+            Jessica <span className="name-highlight">Adzoyi</span>
+          </h1>
+        </div>
 
-            <div
-              ref={cursorRef}
-              className="windmill-cursor"
-              style={{ position: "absolute", pointerEvents: "none" }}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                fill="none"
-                viewBox="0 0 248 248"
-              >
-                <path
-                  fill="url(#windmill-gradient-1)"
-                  d="M152.266 123.716h94.275c.802 0 1.459.656 1.459 1.459v121.067c0 .81-.664 1.474-1.474 1.466-67.274-.78-121.669-55.137-122.522-122.387v121.22c0 .803-.657 1.459-1.46 1.459H1.474c-.81 0-1.474-.664-1.467-1.474C.795 178.721 56 124.008 123.996 124H1.459C.657 124 0 123.344 0 122.541V1.474C0 .664.664 0 1.474.008c67.274.78 121.669 55.137 122.522 122.387V1.46c0-.803.657-1.46 1.46-1.46h121.07c.81 0 1.474.664 1.467 1.474-.679 58.224-41.486 106.801-96.055 119.367-1.686.386-1.401 2.875.336 2.875h-.008Z"
-                ></path>
-                <defs>
-                  <linearGradient
-                    id="windmill-gradient-1"
-                    x1="218"
-                    x2="-47.283"
-                    y1="258"
-                    y2="153.706"
-                    gradientUnits="userSpaceOnUse"
-                  >
-                    <stop offset=".27" stopColor="#ae64d9ff"></stop>
-                    <stop offset=".838" stopColor="#e2e8fd"></stop>
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
+        <div className="intro-tagline" ref={taglineRef}>
+          <span className="tagline-primary">Turning Data into Stories</span>
+          <span className="tagline-secondary">📊 One Analysis at a Time</span>
+        </div>
+
+        <div className="intro-description" ref={descRef}>
+          <p>
+            Biochemistry graduate turned <strong>aspiring data scientist</strong> on an exciting 
+            journey of discovery. Currently pursuing Computer Science while diving deep into 
+            analytics as an intern and through intensive learning at DataCamp and WorldQuant University.
+          </p>
+          <p>
+            My mission? Transform complex datasets into clear, actionable insights that drive 
+            meaningful decisions. Every day brings new opportunities to learn, grow, and get 
+            closer to my dream of becoming a Senior Data Scientist.
+          </p>
+        </div>
+
+        <div className="intro-stats" ref={statsRef}>
+          <div className="stat-item">
+            <span className="stat-number">2023</span>
+            <span className="stat-label">Analytics Journey Started</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">3+</span>
+            <span className="stat-label">Learning Platforms</span>
+          </div>
+          <div className="stat-item">
+            <span className="stat-number">∞</span>
+            <span className="stat-label">Curiosity Level</span>
           </div>
         </div>
 
-        <div className="intro-subtitle" ref={subtitleRef}>
-          <span className="intro-subtitle-name">
-            Aspiring Data Scientist & Current Analytics Intern{" "}
-          </span>{" "}
-          on a journey to transform data into meaningful insights.{" "}
-        </div>
-
-        <div className="intro-desc" ref={descRef}>
-          Biochemistry graduate currently pursuing Computer Science while
-          learning data analytics. Taking courses at DataCamp and enrolled in
-          WorldQuant University's Data Science Lab (2025). Passionate about
-          using data to solve problems and dreaming of becoming a Senior Data
-          Scientist.{" "}
-        </div>
-
-        <div className="intro-buttons" ref={buttonsRef}>
+        <div className="intro-actions" ref={buttonsRef}>
           <a
             href="/assets/resume.pdf"
-            className="outline-button btn-effect"
+            className="primary-button"
             target="_blank"
             rel="noopener noreferrer"
           >
-            View Resume
             <Icon name="Document" className="button-icon" />
+            View My Resume
+          </a>
+          <a
+            href="#projects"
+            className="secondary-button"
+          >
+            <Icon name="Code" className="button-icon" />
+            Explore My Work
           </a>
         </div>
       </div>
 
-      <div className="intro-animation" ref={animationRef}>
-        <AnimatedRobot />
+      <div className="intro-visual">
+        <div className="data-visuals" ref={dataVisualsRef}>
+          <div className="visual-element chart-1">📈</div>
+          <div className="visual-element chart-2">📊</div>
+          <div className="visual-element chart-3">🎯</div>
+          <div className="visual-element chart-4">💡</div>
+        </div>
+        
+        <div className="robot-container" ref={robotRef}>
+          <AnimatedRobot />
+        </div>
+        
+        <div className="learning-badge">
+          <span>🚀 Currently Learning</span>
+        </div>
       </div>
     </div>
   );

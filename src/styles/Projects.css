@@ -5,613 +5,287 @@
   min-height: 50vh;
   margin: auto;
   margin-top: 200px;
-  max-width: 1100px;
-  display: flex;
-  flex-direction: column;
+  max-width: 900px;
+  align-content: center;
   justify-content: center;
 }
 
-.projects-section-container {
-  margin-bottom: 80px;
-  opacity: 0;
-}
-
-.projects-directory-layout {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.project-section-title {
-  font-size: 28px;
-  margin-bottom: 25px;
-  color: var(--lightest-slate);
-  font-weight: 600;
-}
-
-.gradient-text {
-  background: var(--anchor-text);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  display: inline;
-}
-
-/* =============================================
-   Directory Box with Animated Gradient Border
-   ============================================= */
-.directory-box {
-  display: flex;
-  background-color: var(--box-color);
-  backdrop-filter: blur(4px);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+.projects-content {
   position: relative;
-  height: 600px;
-  width: 100%;
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
-  z-index: 5;
+  margin: 1rem 0;
 }
 
-.directory-square {
-  position: absolute;
-  width: 400px;
-  height: 400px;
-  background: linear-gradient(
-    135deg,
-    rgba(217, 138, 217, 0.3),
-    rgba(217, 138, 217, 0.02)
-  );
-  left: -250px;
-  bottom: 250px;
-  transform: rotate(45deg);
-  filter: blur(40px);
-}
-
-.directory-sidebar {
-  width: 260px;
-  min-width: 260px;
-  height: 100%;
-  padding: 20px 15px;
-  overflow-y: auto;
-  transition: var(--transition);
-  z-index: 2;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(217, 138, 217, 0.3) rgba(13, 25, 45, 0.5);
-  background-color: var(--box-color);
-}
-
-.directory-content {
-  flex: 1;
-  height: 100%;
-  overflow: hidden;
-  position: relative;
-  z-index: 1;
-}
-
-/* =============================================
-   Directory Tree Structure
-   ============================================= */
-.directory-tree {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  font-family: "Fira Code", monospace;
-  font-size: 14px;
-  width: 100%;
-}
-
-.project-item {
-  margin-bottom: 4px;
-}
-
-.directory-folder {
-  cursor: pointer;
-  padding: 6px 10px 6px 8px;
-  border-radius: 6px;
-  font-size: 14px;
-  color: var(--lightest-slate);
-  font-family: "NTR", sans-serif;
-  user-select: none;
-  margin-bottom: 2px;
-  display: flex;
-  align-items: center;
-  transition: all 0.2s ease;
-}
-
-.directory-folder:hover {
-  background-color: rgba(217, 138, 217, 0.05);
-}
-
-.directory-folder.open {
-  color: var(--green-bright);
-}
-
-.directory-folder .folder-icon {
-  margin-right: 6px;
-  font-size: 14px;
-  flex-shrink: 0;
-  transition: color 0.3s ease;
-}
-
-.directory-folder .chevron-icon {
-  margin-right: 4px;
-  font-size: 14px;
-  flex-shrink: 0;
-  transition: transform 0.3s ease;
-}
-
-.directory-folder .folder-name {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  flex: 1;
-}
-
-.directory-folder.active {
-  background: linear-gradient(
-    90deg,
-    rgba(217, 138, 217, 0.1),
-    rgba(199, 65, 199, 0.05)
-  );
-  position: relative;
-  border-radius: 6px;
-}
-
-.directory-folder:not(.active) {
-  background: transparent;
-}
-
-.directory-folder.active .folder-name {
-  color: var(--green-bright);
-  font-weight: 500;
-}
-
-.directory-folder:hover:not(.active) {
-  background: rgba(217, 138, 217, 0.05);
-}
-
-.directory-files {
-  list-style: none;
-  padding-left: 1.5rem;
-  padding-right: 0.5rem;
-  margin: 2px 0 6px 0;
-  overflow: hidden;
-}
-
-.file-item {
-  margin: 2px 0;
-}
-
-.directory-file-btn {
-  background: none;
-  border: none;
-  color: var(--lightest-slate);
-  text-align: left;
-  width: 100%;
-  padding: 5px 10px 5px 8px;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
-  font-family: "NTR", sans-serif;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  transition: all 0.2s ease;
-  position: relative;
-  outline: none;
-}
-
-.directory-file-btn svg {
-  flex-shrink: 0;
-  transition: transform 0.2s ease;
-}
-
-.directory-file-btn:hover:not(.active) {
-  background-color: rgba(217, 138, 217, 0.05);
-  color: var(--lightest-slate);
-  padding-left: 12px;
-}
-
-.directory-file-btn.active {
-  background: linear-gradient(
-    90deg,
-    rgba(217, 138, 217, 0.15),
-    rgba(199, 65, 199, 0.05)
-  );
-  color: var(--green-bright) !important;
-  font-weight: 500;
-  padding-left: 12px !important;
-  position: relative;
-}
-
-/* =============================================
-   Project Info Styling - UPDATED
-   ============================================= */
-.project-info-container {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  color: var(--lightest-slate);
-  background-size: cover;
-  background-position: center;
-}
-
-/* Project overlay for text visibility */
-.project-overlay {
+/* Background Elements */
+.projects-bg-elements {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.projects-circle {
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
   background: linear-gradient(
-    180deg,
-    rgba(10, 25, 47, 0) 0%,
-    /* Transparent at top */ rgba(10, 25, 47, 0.1) 15%,
-    /* Very subtle fade begins */ rgba(10, 25, 47, 0.6) 40%,
-    /* Medium opacity where text starts */ rgba(10, 25, 47, 0.9) 70%,
-    /* Strong opacity for main text */ rgba(10, 25, 47, 0.95) 100%
-      /* Nearly opaque at bottom */
+    135deg,
+    rgba(100, 217, 138, 0.1) 0%,
+    rgba(226, 232, 253, 0.1) 100%
   );
-  z-index: 1;
+  top: 20px;
+  right: 20px;
+  animation: float 3s ease-in-out infinite;
 }
 
-.project-content {
-  position: relative;
-  z-index: 2;
-  height: 100%;
-  padding: 2.5rem;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+.projects-square {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(
+    45deg,
+    rgba(226, 232, 253, 0.1) 0%,
+    rgba(100, 217, 138, 0.1) 100%
+  );
+  bottom: 40px;
+  left: 40px;
+  transform: rotate(45deg);
+  animation: float 3s ease-in-out infinite reverse;
 }
 
-/* Project title - make it stand out */
-.project-title {
-  font-size: 30px;
-  font-weight: 700;
-  margin: 0px 0 15px 0;
-
-  color: var(--green-bright);
-  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* Project description */
-.project-description {
-  font-size: 18px;
-  color: var(--lightest-slate);
-  line-height: 1.6;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
 }
 
 /* =============================================
-   Business Impact Section
+   ProjectsList Component Styles
    ============================================= */
-.project-impact-section {
-  margin: 20px 0;
-  padding: 20px 0;
-  border-top: 1px solid rgba(100, 217, 138, 0.2);
-  border-bottom: 1px solid rgba(100, 217, 138, 0.2);
+.projectlist-root {
+  display: flex;
+  border-radius: 10px;
+  min-height: 300px;
+  margin: 1rem 0;
+  background: var(--box-color);
+  backdrop-filter: blur(4px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
 }
 
-.impact-badge {
+.projectlist-tabs {
   display: flex;
   flex-direction: column;
-  margin-bottom: 15px;
+  min-width: 200px;
+  padding-top: 0.5rem;
+  background: rgba(100, 217, 138, 0.03);
+  border-radius: 10px 0 0 10px;
 }
 
-.impact-label {
-  font-size: 12px;
-  font-weight: 600;
-  color: var(--green-bright);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 5px;
-}
-
-.impact-text {
+.projectlist-tab {
+  background: none;
+  border: none;
+  color: var(--light-slate);
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  text-align: left;
   font-size: 16px;
-  color: var(--lightest-slate);
-  font-weight: 500;
-  line-height: 1.4;
+  transition: var(--transition);
+  outline: none;
 }
 
-.business-value-badge {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 10px;
-  padding: 8px 12px;
-  background: rgba(100, 217, 138, 0.1);
-  border-radius: 20px;
-  border: 1px solid rgba(100, 217, 138, 0.3);
-  width: fit-content;
-}
-
-.value-icon {
-  font-size: 16px;
-}
-
-.value-text {
-  font-size: 14px;
+.projectlist-tab.active,
+.projectlist-tab:focus {
   color: var(--green-bright);
-  font-weight: 600;
+  font-weight: bold;
+  border-left: 3px solid var(--green-bright);
+  background: rgba(100, 217, 138, 0.05);
 }
 
-.complexity-badge {
-  padding: 6px 16px;
-  border-radius: 15px;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  width: fit-content;
-  border: 2px solid;
-}
-
-.complexity-advanced {
-  background: rgba(255, 107, 107, 0.15);
-  color: #ff6b6b;
-  border-color: rgba(255, 107, 107, 0.4);
-}
-
-.complexity-intermediate {
-  background: rgba(255, 193, 7, 0.15);
-  color: #ffc107;
-  border-color: rgba(255, 193, 7, 0.4);
-}
-
-.complexity-beginner {
-  background: rgba(40, 167, 69, 0.15);
-  color: #28a745;
-  border-color: rgba(40, 167, 69, 0.4);
-}
-
-/* =============================================
-   Tags Styling
-   ============================================= */
-.project-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 10px 0;
-  padding: 0;
-  list-style: none;
-}
-
-.tag-pill {
-  padding: 6px 12px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 500;
-  color: var(--green-bright);
-  border: 1px solid rgba(100, 217, 138, 0.3);
-  transition: all 0.3s ease;
-  background-color: rgba(10, 25, 47, 0.7);
-}
-
-.tag-pill:hover {
-  background: linear-gradient(
-    120deg,
-    rgba(100, 217, 138, 0.2),
-    rgba(65, 199, 199, 0.2)
-  );
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* =============================================
-   Project Links
-   ============================================= */
-
-.project-links {
-  display: flex;
-  gap: 15px;
-  justify-content: flex-end;
-  overflow: visible;
-}
-
-.icon-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px;
-  height: 30px;
-  color: var(--green-bright);
-  transition:
-    transform 0.15s ease,
-    color 0.2s ease;
-  position: relative;
-  overflow: hidden;
-}
-
-.icon-link:hover {
-  color: var(--lightest-slate);
-  transform: scale(1.15);
-}
-
-.icon-link svg {
-  width: 25px;
-  height: 25px;
-}
-
-/* =============================================
-   Code Viewer
-   ============================================= */
-.code-viewer-container {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  background-color: rgba(5, 14, 27, 0.822);
-  overflow: auto;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.code-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px 16px;
-  background-color: rgba(4, 12, 24, 0.6);
-  border-bottom: 1px solid rgba(100, 217, 138, 0.2);
-}
-
-.file-name {
-  font-family: "Fira Code", monospace;
-  font-size: 14px;
-  color: var(--lightest-slate);
-}
-
-.code-language-badge {
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 12px;
-  font-weight: 500;
-  background: linear-gradient(
-    90deg,
-    rgba(100, 217, 138, 0.2),
-    rgba(65, 199, 199, 0.2)
-  );
+.projectlist-tab:hover {
+  background: var(--color-hover);
   color: var(--green-bright);
 }
 
-.code-viewer-container pre {
+.projectlist-content {
   flex: 1;
-  overflow: auto;
-  margin: 0;
-  padding: 20px;
+  padding: 1.5rem;
+  background: var(--box-color);
+  border-radius: 0 10px 10px 0;
+  overflow-y: auto;
+  max-height: 400px;
 }
 
-.code-viewer-container code {
-  font-family: "Fira Code", monospace;
+.projectlist-panel {
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+/* Project Content Styles */
+.project-title {
+  color: var(--lightest-slate);
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 0.8rem;
+  font-family: "NTR", sans-serif;
+}
+
+.project-company {
+  color: var(--green-bright);
+  font-size: 16px;
+  margin-bottom: 0.5rem;
+}
+
+.project-date {
+  color: var(--light-slate);
+  font-size: 14px;
+  margin-bottom: 1.5rem;
+  font-family: "Monaco", monospace;
+}
+
+.project-description {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-description li {
+  position: relative;
+  margin-bottom: 16px;
+  padding-left: 30px;
+  padding-bottom: 16px;
+  font-size: 18px;
+  color: var(--light-slate);
+}
+
+.project-description li::before {
+  content: "▹    ";
+  color: var(--green-bright);
+  position: absolute;
+  left: 0;
+}
+
+/* Coming Soon Content */
+.coming-soon-content {
+  padding-top: 20px;
+}
+
+.coming-soon-message {
+  text-align: center;
+  padding: 40px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(100, 217, 138, 0.05) 0%,
+    rgba(226, 232, 253, 0.05) 100%
+  );
+  border-radius: 12px;
+  border: 2px dashed rgba(100, 217, 138, 0.3);
+}
+
+.coming-soon-message h3 {
+  color: var(--green-bright);
+  font-size: 24px;
+  margin-bottom: 15px;
+  font-family: "NTR", sans-serif;
+}
+
+.coming-soon-message p {
+  color: var(--light-slate);
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.learning-status {
+  margin-top: 20px;
+}
+
+.status-badge {
+  display: inline-block;
+  background: rgba(100, 217, 138, 0.2);
+  color: var(--green-bright);
+  padding: 6px 12px;
+  border-radius: 20px;
   font-size: 12px;
-  line-height: 1.5;
+  font-weight: bold;
+  margin: 4px;
+  border: 1px solid rgba(100, 217, 138, 0.3);
 }
 
 /* =============================================
-   Media Queries
+   Mobile Responsiveness
    ============================================= */
-@media (max-width: 992px) {
-  .directory-box {
+@media screen and (max-width: 600px) {
+  #projects {
+    margin-top: 100px;
+    max-width: 100%;
+    padding: 0 1rem;
+  }
+
+  .projectlist-root {
     flex-direction: column;
-    height: auto;
-    height: 600px;
+    min-height: auto;
   }
 
-  .directory-sidebar {
-    width: 100%;
-    max-height: 250px;
-    overflow: auto;
-    border-right: none;
-    border-bottom: 1px solid rgba(100, 217, 138, 0.1);
+  .projectlist-tabs {
+    flex-direction: row;
+    min-width: auto;
+    padding: 0.5rem;
+    border-radius: 10px 10px 0 0;
+    background: rgba(100, 217, 138, 0.05);
+    overflow-x: auto;
+    white-space: nowrap;
   }
 
-  .project-overlay {
-    background: linear-gradient(
-      to top,
-      rgba(10, 25, 47, 0.95) 0%,
-      rgba(10, 25, 47, 0.9) 50%,
-      rgba(10, 25, 47, 0.8) 100%
-    );
+  .projectlist-tab {
+    padding: 0.8rem 1rem;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    min-width: 120px;
+    flex-shrink: 0;
   }
 
-  .project-title {
-    margin: 20px 0 15px 0;
+  .projectlist-tab.active {
+    border-left: none;
+    border-bottom: 3px solid var(--green-bright);
+    background: rgba(100, 217, 138, 0.1);
   }
 
-  .project-links {
-    justify-content: flex-end;
-  }
-
-  .code-viewer-container code {
-    font-family: "Fira Code", monospace;
-    font-size: 10px;
-    line-height: 1.5;
-  }
-
-  .project-content {
-    padding: 1.5rem;
-  }
-}
-
-@media (max-width: 768px) {
-  .directory-box {
-    height: 540px;
-  }
-
-  .directory-sidebar {
-    max-height: 200px;
-  }
-
-  .directory-square {
-    display: none;
-  }
-
-  .directory-circle {
-    display: none;
-  }
-
-  .project-section-title {
-    font-size: 24px;
+  .projectlist-content {
+    border-radius: 0 0 10px 10px;
+    max-height: none;
   }
 
   .project-title {
-    margin: 10px 0 15px 0;
     font-size: 20px;
   }
 
-  .project-description {
+  .project-description li {
     font-size: 16px;
+    padding-left: 25px;
   }
 
-  .tag-pill {
-    font-size: 12px;
+  .coming-soon-message {
+    padding: 30px 15px;
   }
 
-  .directory-folder,
-  .directory-file-btn {
-    font-size: 13px;
-  }
-
-  .directory-files {
-    padding-left: 1.2rem;
-  }
-
-  .project-content {
-    padding: 1.2rem;
-  }
-
-  .icon-link svg {
-    width: 20px;
-    height: 20px;
+  .coming-soon-message h3 {
+    font-size: 20px;
   }
 }
 
-@media (max-width: 600px) {
-  #projects {
-    margin-top: 150px;
+@media screen and (max-width: 768px) {
+  .projectlist-tabs {
+    min-width: 180px;
   }
 
-  .tag-pill {
-    padding: 4px 10px;
-  }
-
-  .project-content {
+  .projectlist-content {
     padding: 1rem;
-  }
-
-  .project-title {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-
-  .project-description {
-    font-size: 14px;
   }
 }
