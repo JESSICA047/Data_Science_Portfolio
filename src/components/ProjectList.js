@@ -1,6 +1,10 @@
 import Code from "./codes/code";
 
 const ProjectList = {
+  /* 
+  // Jessica's projects will be added here as she completes them
+  // Currently learning the fundamentals and will showcase projects soon!
+  
   SQL: [
     {
       name: "Cyclistic Bike Share Analysis",
@@ -199,6 +203,9 @@ const ProjectList = {
       ],
     },
   ],
+  */
+  // Empty for now - Jessica is still learning and building her first projects!
+  // Stay tuned for amazing data science projects coming soon 🚀
 };
 
 export default ProjectList;

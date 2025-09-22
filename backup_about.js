@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Icon from "./Icons";
@@ -57,53 +57,50 @@ const About = () => {
       <div className="about-content">
         <div className="about-description">
           <p ref={(el) => (textRefs.current[0] = el)}>
-            Hi, my name is Jessica and I have a passion for turning data into
-            meaningful insights. I graduated with a degree in Biochemistry in
-            2024, where I developed strong analytical skills working with
-            complex datasets and research methodologies.{" "}
+            Hi, my name is Jessica and I enjoy fiddling with numbers and solving
+            problems. My interest in data started back in 2022 when I was
+            working on a market research report for a startup. The subtle
+            realization of the power of data was all it took to get me hooked on
+            the field of data analytics.
           </p>
 
           <p ref={(el) => (textRefs.current[1] = el)}>
-            Currently, I'm pursuing a Computer Science degree (2023-2026) to
-            build strong technical foundations for my data science career. I'm
-            also enrolled in WorldQuant University's Applied Data Science Lab
-            and actively learning through DataCamp to strengthen my skills in
-            Python, SQL, and data analysis.
+            Since then, I’ve earned a{" "}
             <a
-              // href="https://www.credly.com/badges/76531ad7-80dc-4eea-8523-983d8b70f941/public_url"
+              href="https://www.credly.com/badges/76531ad7-80dc-4eea-8523-983d8b70f941/public_url"
               target="_blank"
             >
-              Computer Science degree (2023-2026)
+              Google Data Analytics Certificate
             </a>{" "}
-            to build strong technical foundations for my data science career.
-            I'm also enrolled in WorldQuant University's Applied Data Science
-            Lab and actively learning through DataCamp to strengthen my skills
-            in
-            <span className="highlight">Python, SQL, and data analysis.</span>
+            and built a strong foundation in{" "}
+            <span className="highlight">SQL, Tableau, and Python</span>. For me,
+            data analysis feels like playing detective—piecing together clues
+            from numbers to reveal the bigger picture.
           </p>
 
           <p ref={(el) => (textRefs.current[2] = el)}>
-            My dream is to become a Senior Data Scientist, and I'm taking it one
-            step at a time. I believe in the power of continuous learning and
-            building a strong foundation. This portfolio represents my journey
-            from a biology graduate to an aspiring data professional - and I
-            can't wait to fill it with amazing projects as I grow in this field!{" "}
-            {/* <span className="highlight">HTML, CSS & JavaScript</span> along the
+            I have a strong appetite for learning and I'm always eager to
+            explore new technologies. This website is a testament to my journey
+            where I picked up{" "}
+            <span className="highlight">HTML, CSS & JavaScript</span> along the
             way. I also have a background in{" "}
-            <span className="highlight"> Graphic Design. </span> */}
+            <span className="highlight"> Graphic Design. </span>
           </p>
 
           <p ref={(el) => (textRefs.current[3] = el)}>
-            Outside of studying and learning data skills, I enjoy exploring new
-            technologies, reading about scientific breakthroughs, and planning
-            my next learning adventure. I'm excited about what the future holds
-            in data science!{" "}
+            While building this website, I used AI tools like ChatGPT, Claude
+            Code and GitHub Copilot, which made me realize the transformative
+            power of AI and its future in tech. That experience led me to
+            explore local AI models for more data-secure solutions and sparked
+            my interest in automation workflows. Since then, I’ve been focused
+            on connecting the best of both worlds - AI and automation; to build
+            smooth, scalable systems for data pipelines and beyond.
           </p>
 
-          {/* <p ref={(el) => (textRefs.current[4] = el)}>
+          <p ref={(el) => (textRefs.current[4] = el)}>
             Outside of work, I love playing video games. I'm also into aesthetic
             interior designs and I love hoarding cool tech products.
-          </p> */}
+          </p>
         </div>
         <p
           className="about-timeline-link"
@@ -111,10 +108,10 @@ const About = () => {
         >
           <a href="#timeline">
             <span role="img" aria-label="timeline">
-              ðŸ—ºï¸{" "}
+              🗺️{" "}
             </span>
-            View my <span className="about-timeline-highlight">educational journey</span>{" "}
-            to learn more about my unique journey into data science &rarr;
+            View my <span className="about-timeline-highlight">timeline</span>{" "}
+            to learn more about my unique journey into data &rarr;
           </a>
         </p>
         <div className="about-actions" ref={(el) => (textRefs.current[6] = el)}>

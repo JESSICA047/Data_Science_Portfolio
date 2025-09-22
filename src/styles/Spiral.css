@@ -30,9 +30,9 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
 
 .animation-container {
   position: center;
-  background: radial-gradient(ellipse at center, #070a14 0%, #000000ee 65%);
+  background: radial-gradient(ellipse at center, #1a070a 0%, #000000ee 65%);
   border-radius: 50%;
-  box-shadow: 0 0 8px 2px rgba(38, 226, 104, 0.25);
+  box-shadow: 0 0 8px 2px rgba(226, 104, 226, 0.25);
   width: 225px;
   height: 225px;
   margin-bottom: 70px;
@@ -41,7 +41,10 @@ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN 
   align-items: center;
   justify-content: center;
   overflow: visible;
-  transition: border-color 0.3s ease, width 0.3s ease, height 0.3s ease;
+  transition:
+    border-color 0.3s ease,
+    width 0.3s ease,
+    height 0.3s ease;
 }
 
 .animation-container::before {

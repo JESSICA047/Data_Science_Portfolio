@@ -231,7 +231,7 @@ class NavBar extends React.Component {
         as="nav"
         ref={this.navbarRef}
         fixed="top"
-        className={`bg-body-tertiary navbar-animated${show ? " navbar-visible" : " navbar-hidden"}${atTop ? " navbar-at-top" : ""}`}
+        className={`custom-navbar navbar-animated${show ? " navbar-visible" : " navbar-hidden"}${atTop ? " navbar-at-top" : ""}`}
         style={{ zIndex: 1000 }}
       >
         <Container

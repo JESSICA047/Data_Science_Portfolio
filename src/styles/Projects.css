@@ -13,7 +13,7 @@
 
 .projects-section-container {
   margin-bottom: 80px;
-  opacity: 0; 
+  opacity: 0;
 }
 
 .projects-directory-layout {
@@ -49,7 +49,9 @@
   position: relative;
   height: 600px;
   width: 100%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   z-index: 5;
 }
 
@@ -57,7 +59,11 @@
   position: absolute;
   width: 400px;
   height: 400px;
-  background: linear-gradient(135deg, rgba(100, 217, 137, 0.3), rgba(100, 217, 138, 0.02));
+  background: linear-gradient(
+    135deg,
+    rgba(217, 138, 217, 0.3),
+    rgba(217, 138, 217, 0.02)
+  );
   left: -250px;
   bottom: 250px;
   transform: rotate(45deg);
@@ -73,7 +79,7 @@
   transition: var(--transition);
   z-index: 2;
   scrollbar-width: thin;
-  scrollbar-color: rgba(100, 217, 138, 0.3) rgba(13, 25, 45, 0.5);
+  scrollbar-color: rgba(217, 138, 217, 0.3) rgba(13, 25, 45, 0.5);
   background-color: var(--box-color);
 }
 
@@ -92,7 +98,7 @@
   list-style-type: none;
   padding: 0;
   margin: 0;
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   font-size: 14px;
   width: 100%;
 }
@@ -116,7 +122,7 @@
 }
 
 .directory-folder:hover {
-  background-color: rgba(100, 217, 138, 0.05);
+  background-color: rgba(217, 138, 217, 0.05);
 }
 
 .directory-folder.open {
@@ -145,7 +151,11 @@
 }
 
 .directory-folder.active {
-  background: linear-gradient(90deg, rgba(100, 217, 138, 0.1), rgba(65, 199, 199, 0.05));
+  background: linear-gradient(
+    90deg,
+    rgba(217, 138, 217, 0.1),
+    rgba(199, 65, 199, 0.05)
+  );
   position: relative;
   border-radius: 6px;
 }
@@ -160,7 +170,7 @@
 }
 
 .directory-folder:hover:not(.active) {
-  background: rgba(100, 217, 138, 0.05);
+  background: rgba(217, 138, 217, 0.05);
 }
 
 .directory-files {
@@ -200,13 +210,17 @@
 }
 
 .directory-file-btn:hover:not(.active) {
-  background-color: rgba(100, 217, 138, 0.05);
+  background-color: rgba(217, 138, 217, 0.05);
   color: var(--lightest-slate);
   padding-left: 12px;
 }
 
 .directory-file-btn.active {
-  background: linear-gradient(90deg, rgba(100, 217, 138, 0.15), rgba(65, 199, 199, 0.05));
+  background: linear-gradient(
+    90deg,
+    rgba(217, 138, 217, 0.15),
+    rgba(199, 65, 199, 0.05)
+  );
   color: var(--green-bright) !important;
   font-weight: 500;
   padding-left: 12px !important;
@@ -238,11 +252,12 @@
   height: 100%;
   background: linear-gradient(
     180deg,
-    rgba(10, 25, 47, 0) 0%,        /* Transparent at top */
-    rgba(10, 25, 47, 0.1) 15%,     /* Very subtle fade begins */
-    rgba(10, 25, 47, 0.6) 40%,     /* Medium opacity where text starts */
-    rgba(10, 25, 47, 0.9) 70%,     /* Strong opacity for main text */
-    rgba(10, 25, 47, 0.95) 100%    /* Nearly opaque at bottom */
+    rgba(10, 25, 47, 0) 0%,
+    /* Transparent at top */ rgba(10, 25, 47, 0.1) 15%,
+    /* Very subtle fade begins */ rgba(10, 25, 47, 0.6) 40%,
+    /* Medium opacity where text starts */ rgba(10, 25, 47, 0.9) 70%,
+    /* Strong opacity for main text */ rgba(10, 25, 47, 0.95) 100%
+      /* Nearly opaque at bottom */
   );
   z-index: 1;
 }
@@ -256,7 +271,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-
 }
 
 /* Project title - make it stand out */
@@ -301,7 +315,11 @@
 }
 
 .tag-pill:hover {
-  background: linear-gradient(120deg, rgba(100, 217, 138, 0.2), rgba(65, 199, 199, 0.2));
+  background: linear-gradient(
+    120deg,
+    rgba(100, 217, 138, 0.2),
+    rgba(65, 199, 199, 0.2)
+  );
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -323,7 +341,9 @@
   width: 30px;
   height: 30px;
   color: var(--green-bright);
-  transition: transform 0.15s ease, color 0.2s ease;
+  transition:
+    transform 0.15s ease,
+    color 0.2s ease;
   position: relative;
   overflow: hidden;
 }
@@ -360,7 +380,7 @@
 }
 
 .file-name {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   font-size: 14px;
   color: var(--lightest-slate);
 }
@@ -370,7 +390,11 @@
   border-radius: 4px;
   font-size: 12px;
   font-weight: 500;
-  background: linear-gradient(90deg, rgba(100, 217, 138, 0.2), rgba(65, 199, 199, 0.2));
+  background: linear-gradient(
+    90deg,
+    rgba(100, 217, 138, 0.2),
+    rgba(65, 199, 199, 0.2)
+  );
   color: var(--green-bright);
 }
 
@@ -382,7 +406,7 @@
 }
 
 .code-viewer-container code {
-  font-family: 'Fira Code', monospace;
+  font-family: "Fira Code", monospace;
   font-size: 12px;
   line-height: 1.5;
 }
@@ -396,7 +420,7 @@
     height: auto;
     height: 600px;
   }
-  
+
   .directory-sidebar {
     width: 100%;
     max-height: 250px;
@@ -417,13 +441,13 @@
   .project-title {
     margin: 20px 0 15px 0;
   }
-  
+
   .project-links {
     justify-content: flex-end;
   }
 
   .code-viewer-container code {
-    font-family: 'Fira Code', monospace;
+    font-family: "Fira Code", monospace;
     font-size: 10px;
     line-height: 1.5;
   }
@@ -444,25 +468,25 @@
 
   .directory-square {
     display: none;
-    }
+  }
 
   .directory-circle {
-    display: none; 
+    display: none;
   }
 
   .project-section-title {
     font-size: 24px;
   }
-  
+
   .project-title {
     margin: 10px 0 15px 0;
     font-size: 20px;
   }
-  
+
   .project-description {
     font-size: 16px;
   }
-  
+
   .tag-pill {
     font-size: 12px;
   }
@@ -471,7 +495,7 @@
   .directory-file-btn {
     font-size: 13px;
   }
-  
+
   .directory-files {
     padding-left: 1.2rem;
   }
@@ -490,7 +514,7 @@
   #projects {
     margin-top: 150px;
   }
-  
+
   .tag-pill {
     padding: 4px 10px;
   }
@@ -498,12 +522,12 @@
   .project-content {
     padding: 1rem;
   }
-  
+
   .project-title {
     font-size: 18px;
     margin-bottom: 10px;
   }
-  
+
   .project-description {
     font-size: 14px;
   }

@@ -26,7 +26,7 @@
   cursor: pointer;
   transition: var(--transition);
   position: relative;
-  max-width: 110px; 
+  max-width: 110px;
   margin: 0 auto;
 }
 
@@ -54,7 +54,7 @@
   bottom: -35px;
   left: 50%;
   transform: translateX(-50%);
-  background-color: rgba(22, 28, 47, 0.9);
+  background-color: rgba(47, 22, 47, 0.9);
   color: var(--lightest-slate);
   padding: 5px 10px;
   border-radius: 5px;
@@ -62,9 +62,11 @@
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
   z-index: 10;
-  border: 1px solid rgba(100, 217, 138, 0.3);
+  border: 1px solid rgba(217, 138, 217, 0.3);
 }
 
 .tech-icon-container:hover::after {
@@ -84,11 +86,11 @@
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
   }
-  
+
   .tech-icon {
     font-size: 40px;
   }
-  
+
   .tech-icon svg {
     width: 40px;
     height: 40px;
@@ -100,15 +102,15 @@
     grid-template-columns: repeat(4, 1fr);
     gap: 15px;
   }
-  
+
   .tech-icon-container {
     padding: 20px;
   }
-  
+
   .tech-icon {
     font-size: 36px;
   }
-  
+
   .tech-icon svg {
     width: 36px;
     height: 36px;
