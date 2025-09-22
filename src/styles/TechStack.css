@@ -1,51 +1,234 @@
 #tech-stack {
   margin: auto;
-  max-width: 1100px;
-  margin-top: 50px;
+  max-width: 1200px;
+  padding: 80px 20px;
   display: flex;
   flex-direction: column;
   position: relative;
 }
 
-.tech-grid-container {
+.tech-title {
+  font-size: 48px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 60px;
+  color: var(--lightest-slate);
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, var(--green-bright), var(--color-hover));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Categories Container */
+.tech-categories-container {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 30px;
-  margin-top: 30px;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 40px;
+  margin-top: 20px;
 }
 
-.tech-icon-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 10px;
-  background-color: var(--box-color);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  aspect-ratio: 1/1;
-  cursor: pointer;
-  transition: var(--transition);
+.tech-category {
+  background: linear-gradient(
+    145deg,
+    rgba(17, 34, 64, 0.8) 0%,
+    rgba(25, 42, 72, 0.6) 100%
+  );
+  border: 1px solid rgba(100, 217, 138, 0.2);
+  border-radius: 16px;
+  padding: 30px;
+  backdrop-filter: blur(10px);
   position: relative;
-  max-width: 110px;
-  margin: 0 auto;
+  overflow: hidden;
 }
 
-.tech-icon-container:hover {
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+.tech-category::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(100, 217, 138, 0.05) 0%,
+    rgba(174, 100, 217, 0.05) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
-.tech-icon {
-  font-size: 36px;
+.tech-category:hover::before {
+  opacity: 1;
+}
+
+.category-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--green-bright);
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
+  z-index: 2;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.skill-item {
+  background: rgba(15, 30, 48, 0.5);
+  border: 1px solid rgba(100, 217, 138, 0.15);
+  border-radius: 12px;
+  padding: 20px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  position: relative;
+}
+
+.skill-item:hover {
+  border-color: rgba(100, 217, 138, 0.3);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+.skill-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 12px;
+}
+
+.skill-icon {
+  font-size: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.3s ease;
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
 }
 
-.tech-icon svg {
-  width: 36px;
-  height: 36px;
-  display: block;
+.skill-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.skill-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--lightest-slate);
+  flex: 1;
+}
+
+.skill-percentage {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--green-bright);
+  font-family: "SF Mono", "Monaco", "Inconsolata", "Roboto Mono", monospace;
+}
+
+/* Proficiency Bar */
+.proficiency-bar {
+  width: 100%;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 3px;
+  overflow: hidden;
+  position: relative;
+}
+
+.proficiency-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s ease;
+  position: relative;
+}
+
+.proficiency-fill::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  #tech-stack {
+    padding: 60px 15px;
+  }
+
+  .tech-title {
+    font-size: 36px;
+    margin-bottom: 40px;
+  }
+
+  .tech-categories-container {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .tech-category {
+    padding: 25px 20px;
+  }
+
+  .category-title {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .skills-grid {
+    gap: 15px;
+  }
+
+  .skill-item {
+    padding: 15px;
+  }
+
+  .skill-header {
+    gap: 12px;
+  }
+
+  .skill-icon {
+    font-size: 24px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .skill-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .skill-name {
+    font-size: 15px;
+  }
 }
 
 .tech-icon-container::after {

@@ -156,7 +156,7 @@ const Intro = () => {
   }, []);
 
   return (
-    <div className="intro-section">
+    <div className="intro-section" id="home">
       <div className="intro-content">
         <div className="typist-content">
           <div
@@ -205,18 +205,17 @@ const Intro = () => {
         </div>
 
         <div className="intro-subtitle" ref={subtitleRef}>
-          I'm an{" "}
           <span className="intro-subtitle-name">
-            I'm an aspiring Data Scientist{" "}
+            Data Scientist & Analytics Professional{" "}
           </span>{" "}
-          with a passion for uncovering insights from data.{" "}
+          transforming complex data into strategic business insights.{" "}
         </div>
 
         <div className="intro-desc" ref={descRef}>
-          Currently a Data Analytics Intern with a Biochemistry background, I'm
-          building my skills in data analysis, Python, SQL, and machine
-          learning. I love turning complex datasets into meaningful stories and
-          actionable insights.{" "}
+          Combining scientific rigor with advanced analytics to solve real-world
+          business problems. Experienced in SQL, Python, and statistical
+          modeling with a proven track record of delivering actionable insights
+          that drive decision-making and business growth.{" "}
         </div>
 
         <div className="intro-buttons" ref={buttonsRef}>

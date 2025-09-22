@@ -242,7 +242,7 @@ class NavBar extends React.Component {
             justifyContent: "space-between",
           }}
         >
-          <Navbar.Brand href="Home" style={{ marginRight: "auto" }}>
+          <Navbar.Brand href="#home" style={{ marginRight: "auto" }}>
             <div className="logo-container btn-effect" ref={this.logoRef}>
               <img
                 className="logo"
@@ -257,17 +257,17 @@ class NavBar extends React.Component {
           <div className="desktop-nav">
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#about" ref={this.addToDesktopNavRefs}>
-                  About
-                </Nav.Link>
                 <Nav.Link href="#projects" ref={this.addToDesktopNavRefs}>
                   Projects
                 </Nav.Link>
-                <Nav.Link href="#timeline" ref={this.addToDesktopNavRefs}>
-                  Timeline
+                <Nav.Link href="#tech-stack" ref={this.addToDesktopNavRefs}>
+                  Skills
                 </Nav.Link>
                 <Nav.Link href="#experience" ref={this.addToDesktopNavRefs}>
                   Experience
+                </Nav.Link>
+                <Nav.Link href="#about" ref={this.addToDesktopNavRefs}>
+                  About
                 </Nav.Link>
                 <Nav.Link href="#contact" ref={this.addToDesktopNavRefs}>
                   Contact
@@ -306,13 +306,6 @@ class NavBar extends React.Component {
           >
             <Nav className="mobile-nav-links">
               <Nav.Link
-                href="#about"
-                onClick={this.toggleMobileMenu}
-                ref={this.addToMobileNavRefs}
-              >
-                About
-              </Nav.Link>
-              <Nav.Link
                 href="#projects"
                 onClick={this.toggleMobileMenu}
                 ref={this.addToMobileNavRefs}
@@ -320,11 +313,11 @@ class NavBar extends React.Component {
                 Projects
               </Nav.Link>
               <Nav.Link
-                href="#timeline"
+                href="#tech-stack"
                 onClick={this.toggleMobileMenu}
                 ref={this.addToMobileNavRefs}
               >
-                Timeline
+                Skills
               </Nav.Link>
               <Nav.Link
                 href="#experience"
@@ -332,6 +325,13 @@ class NavBar extends React.Component {
                 ref={this.addToMobileNavRefs}
               >
                 Experience
+              </Nav.Link>
+              <Nav.Link
+                href="#about"
+                onClick={this.toggleMobileMenu}
+                ref={this.addToMobileNavRefs}
+              >
+                About
               </Nav.Link>
               <Nav.Link
                 href="#contact"

@@ -9,6 +9,8 @@ import NavBar from "./components/NavBar";
 import SideNavBar from "./components/SideNavBar";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
+import DataMetrics from "./components/DataMetrics";
+import DataStories from "./components/DataStories";
 import { StarsCanvas } from "./components/StarBackground";
 import "./App.css";
 import "./styles/Global.css";
@@ -18,18 +20,20 @@ function App() {
   return (
     <div className="App">
       {showStars && <StarsCanvas />}
-        <>
-          <NavBar showStars={showStars} setShowStars={setShowStars} />
-          <SideNavBar showStars={showStars} setShowStars={setShowStars} />
-        </>
-      
+      <>
+        <NavBar showStars={showStars} setShowStars={setShowStars} />
+        <SideNavBar showStars={showStars} setShowStars={setShowStars} />
+      </>
+
       <div id="content">
         <Intro />
-        <About />
+        <DataMetrics />
         <Projects />
-        <Timeline />
-        <Experience />
+        <DataStories />
         <TechStack />
+        <Experience />
+        <About />
+        <Timeline />
         <Contact />
         <Credits />
       </div>

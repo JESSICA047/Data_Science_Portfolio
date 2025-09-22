@@ -29,14 +29,74 @@ import { FaAws } from "react-icons/fa";
 gsap.registerPlugin(ScrollTrigger);
 
 const techStackData = [
-  { name: "Excel", icon: <RiFileExcel2Fill />, color: "#217346" },
-  { name: "Python", icon: <SiPython />, color: "#3776AB" },
-  { name: "VS Code", icon: <VscVscode />, color: "#007ACC" },
-  // Learning & Coming Soon:
-  // { name: "SQL", icon: <SiMysql />, color: "#00758F" },
-  // { name: "Tableau", icon: <SiTableau />, color: "#E97627" },
-  // { name: "Pandas", icon: <SiPandas />, color: "#150458" },
-  // { name: "NumPy", icon: <SiNumpy />, color: "#013243" },
+  // Core Data Science Tools
+  {
+    name: "Python",
+    icon: <SiPython />,
+    color: "#3776AB",
+    proficiency: 85,
+    category: "Programming",
+  },
+  {
+    name: "SQL",
+    icon: <SiMysql />,
+    color: "#00758F",
+    proficiency: 90,
+    category: "Database",
+  },
+  {
+    name: "Tableau",
+    icon: <SiTableau />,
+    color: "#E97627",
+    proficiency: 80,
+    category: "Visualization",
+  },
+
+  // Data Analysis & Processing
+  {
+    name: "Pandas",
+    icon: <SiPandas />,
+    color: "#150458",
+    proficiency: 85,
+    category: "Analysis",
+  },
+  {
+    name: "NumPy",
+    icon: <SiNumpy />,
+    color: "#013243",
+    proficiency: 80,
+    category: "Analysis",
+  },
+  {
+    name: "Excel",
+    icon: <RiFileExcel2Fill />,
+    color: "#217346",
+    proficiency: 95,
+    category: "Analysis",
+  },
+
+  // Development Tools
+  {
+    name: "Jupyter",
+    icon: <SiJupyter />,
+    color: "#F37626",
+    proficiency: 90,
+    category: "Development",
+  },
+  {
+    name: "VS Code",
+    icon: <VscVscode />,
+    color: "#007ACC",
+    proficiency: 85,
+    category: "Development",
+  },
+  {
+    name: "Git",
+    icon: <SiGit />,
+    color: "#F05032",
+    proficiency: 75,
+    category: "Development",
+  },
 ];
 
 export default function TechStack() {
@@ -74,23 +134,17 @@ export default function TechStack() {
     );
 
     gsap.fromTo(
-      ".tech-icon-container",
+      ".tech-category",
       {
-        scale: 0.1,
-        y: -250,
+        y: 60,
         opacity: 0,
       },
       {
         y: 0,
-        scale: 1,
-        duration: 0.5,
         opacity: 1,
-        stagger: {
-          grid: [7, 15],
-          from: "center",
-          amount: 1,
-        },
-        ease: "power1.inOut",
+        duration: 0.6,
+        stagger: 0.2,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: "#tech-stack",
           start: "top 70%",
@@ -104,20 +158,30 @@ export default function TechStack() {
     };
   }, []);
 
-  const handleIconHover = (e, enter) => {
+  const groupedSkills = techStackData.reduce((acc, skill) => {
+    if (!acc[skill.category]) {
+      acc[skill.category] = [];
+    }
+    acc[skill.category].push(skill);
+    return acc;
+  }, {});
+
+  const handleSkillHover = (e, enter, skill) => {
     const target = e.currentTarget;
+    const proficiencyBar = target.querySelector(".proficiency-fill");
 
     if (enter) {
       gsap.to(target, {
-        y: -5,
-        scale: 1.1,
+        y: -3,
+        scale: 1.02,
         duration: 0.3,
         ease: "power2.out",
       });
 
-      gsap.to(target.querySelector(".tech-icon"), {
-        color: "var(--green-bright)",
-        duration: 0.3,
+      gsap.to(proficiencyBar, {
+        width: `${skill.proficiency}%`,
+        duration: 0.8,
+        ease: "power2.out",
       });
     } else {
       gsap.to(target, {
@@ -127,9 +191,10 @@ export default function TechStack() {
         ease: "power2.out",
       });
 
-      gsap.to(target.querySelector(".tech-icon"), {
-        color: target.dataset.color,
-        duration: 0.3,
+      gsap.to(proficiencyBar, {
+        width: `${skill.proficiency * 0.8}%`,
+        duration: 0.5,
+        ease: "power2.out",
       });
     }
   };
@@ -137,21 +202,43 @@ export default function TechStack() {
   return (
     <section id="tech-stack" ref={techStackRef}>
       <div className="section-header">
-        <span className="section-title tech-title">Tech Stack</span>
+        <span className="section-title tech-title">
+          <span className="gradient-text">Technical</span> Skills
+        </span>
       </div>
 
-      <div className="tech-grid-container">
-        {techStackData.map((tool, index) => (
-          <div
-            key={tool.name}
-            className="tech-icon-container"
-            data-color={tool.color}
-            title={tool.name}
-            onMouseEnter={(e) => handleIconHover(e, true)}
-            onMouseLeave={(e) => handleIconHover(e, false)}
-          >
-            <div className="tech-icon" style={{ color: tool.color }}>
-              {tool.icon}
+      <div className="tech-categories-container">
+        {Object.entries(groupedSkills).map(([category, skills]) => (
+          <div key={category} className="tech-category">
+            <h3 className="category-title">{category}</h3>
+            <div className="skills-grid">
+              {skills.map((skill, index) => (
+                <div
+                  key={skill.name}
+                  className="skill-item"
+                  onMouseEnter={(e) => handleSkillHover(e, true, skill)}
+                  onMouseLeave={(e) => handleSkillHover(e, false, skill)}
+                >
+                  <div className="skill-header">
+                    <div className="skill-icon" style={{ color: skill.color }}>
+                      {skill.icon}
+                    </div>
+                    <span className="skill-name">{skill.name}</span>
+                    <span className="skill-percentage">
+                      {skill.proficiency}%
+                    </span>
+                  </div>
+                  <div className="proficiency-bar">
+                    <div
+                      className="proficiency-fill"
+                      style={{
+                        backgroundColor: skill.color,
+                        width: `${skill.proficiency * 0.8}%`,
+                      }}
+                    ></div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ))}

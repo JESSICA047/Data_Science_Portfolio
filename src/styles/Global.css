@@ -67,3 +67,73 @@
     z-index: -1;
   }
 }
+
+/* =============================================
+   Mobile Performance Optimizations
+   ============================================= */
+@media (max-width: 768px) {
+  /* Reduce animations for mobile performance */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Optimize scroll performance */
+  html {
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Professional mobile spacing */
+  section {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  /* Improve touch targets */
+  .btn-effect {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Reduce motion for mobile */
+  .btn-effect:hover {
+    transform: translate(-2px, -2px);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Further mobile optimizations */
+  .btn-effect:hover {
+    transform: none;
+  }
+
+  .btn-effect:hover::after {
+    box-shadow: 2px 2px 0 0 var(--green-bright);
+  }
+}
+
+/* =============================================
+   Professional Dark Theme Enhancements
+   ============================================= */
+::selection {
+  background-color: rgba(217, 138, 217, 0.3);
+  color: var(--lightest-slate);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-hover);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--green-bright);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(217, 138, 217, 0.8);
+}
