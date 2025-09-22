@@ -94,15 +94,9 @@
   display: flex;
   gap: 40px;
   margin-bottom: 40px;
-  padding: 25px 0;
+  padding: 20px 0;
   border-top: 1px solid rgba(100, 217, 138, 0.2);
   border-bottom: 1px solid rgba(100, 217, 138, 0.2);
-  background: linear-gradient(
-    135deg,
-    rgba(100, 217, 138, 0.05) 0%,
-    rgba(226, 232, 253, 0.05) 100%
-  );
-  border-radius: 12px;
 }
 
 .stat-item {
@@ -110,24 +104,21 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  flex: 1;
 }
 
 .stat-number {
-  font-size: 28px;
+  font-size: 24px;
   font-weight: 700;
   color: var(--green-bright);
   font-family: "Monaco", monospace;
-  margin-bottom: 8px;
-  text-shadow: 0 0 10px rgba(100, 217, 138, 0.3);
+  margin-bottom: 5px;
 }
 
 .stat-label {
   font-size: 12px;
   color: var(--light-slate);
   text-transform: uppercase;
-  letter-spacing: 0.8px;
-  font-weight: 500;
+  letter-spacing: 0.5px;
 }
 
 /* Action Buttons */
@@ -237,8 +228,7 @@
 }
 
 @keyframes float {
-  0%,
-  100% {
+  0%, 100% {
     transform: translateY(0px) rotate(0deg);
   }
   50% {
@@ -258,11 +248,7 @@
   bottom: -20px;
   left: 50%;
   transform: translateX(-50%);
-  background: linear-gradient(
-    135deg,
-    rgba(100, 217, 138, 0.2) 0%,
-    rgba(226, 232, 253, 0.2) 100%
-  );
+  background: linear-gradient(135deg, rgba(100, 217, 138, 0.2) 0%, rgba(226, 232, 253, 0.2) 100%);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(100, 217, 138, 0.3);
   border-radius: 20px;
@@ -275,8 +261,7 @@
 }
 
 @keyframes pulse {
-  0%,
-  100% {
+  0%, 100% {
     box-shadow: 0 0 0 0 rgba(100, 217, 138, 0.4);
   }
   50% {
@@ -291,7 +276,7 @@
   .intro-section {
     gap: 40px;
   }
-
+  
   .intro-stats {
     gap: 30px;
   }
@@ -313,8 +298,6 @@
   .intro-visual {
     order: 1;
     min-height: 300px;
-    margin-top: 80px;
-    padding-top: 20px;
   }
 
   .intro-stats {
@@ -335,11 +318,6 @@
 @media screen and (max-width: 600px) {
   .intro-section {
     padding: 20px 15px;
-  }
-
-  .intro-visual {
-    margin-top: 100px;
-    padding-top: 30px;
   }
 
   .intro-greeting {
@@ -376,150 +354,5 @@
 
   .stat-label {
     font-size: 11px;
-  }
-}
-
-/* =============================================
-   Orbital Container and Animations
-   ============================================= */
-.orbital-container {
-  position: relative;
-  width: 300px;
-  height: 300px;
-  margin: 20px auto;
-}
-
-.orbital-element {
-  position: absolute;
-  width: 60px;
-  height: 60px;
-  background: linear-gradient(135deg, var(--green-bright), var(--light-slate));
-  border: 2px solid rgba(198, 100, 217, 0.3);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 24px;
-  color: white;
-  box-shadow: 0 0 20px rgba(198, 100, 217, 0.4);
-  animation: orbit 20s linear infinite;
-  transform-origin: 150px 150px;
-  opacity: 0;
-  scale: 0.5;
-}
-
-.orbital-element:nth-child(1) {
-  animation-delay: 0s;
-  top: -30px;
-  left: 120px;
-}
-
-.orbital-element:nth-child(2) {
-  animation-delay: -3.33s;
-  top: 45px;
-  left: 240px;
-}
-
-.orbital-element:nth-child(3) {
-  animation-delay: -6.66s;
-  top: 165px;
-  left: 240px;
-}
-
-.orbital-element:nth-child(4) {
-  animation-delay: -10s;
-  top: 270px;
-  left: 120px;
-}
-
-.orbital-element:nth-child(5) {
-  animation-delay: -13.33s;
-  top: 165px;
-  left: 0px;
-}
-
-.orbital-element:nth-child(6) {
-  animation-delay: -16.66s;
-  top: 45px;
-  left: 0px;
-}
-
-@keyframes orbit {
-  from {
-    transform: rotate(0deg) translateX(120px) rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg) translateX(120px) rotate(-360deg);
-  }
-}
-
-/* Override robot container to center it in orbital */
-.intro-visual .robot-container {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 2;
-}
-
-/* =============================================
-   Orbital Responsive Design
-   ============================================= */
-@media (max-width: 768px) {
-  .orbital-container {
-    width: 200px;
-    height: 200px;
-  }
-
-  .orbital-element {
-    width: 40px;
-    height: 40px;
-    font-size: 16px;
-    transform-origin: 100px 100px;
-  }
-
-  .orbital-element:nth-child(1) {
-    top: -20px;
-    left: 80px;
-  }
-
-  .orbital-element:nth-child(2) {
-    top: 30px;
-    left: 160px;
-  }
-
-  .orbital-element:nth-child(3) {
-    top: 110px;
-    left: 160px;
-  }
-
-  .orbital-element:nth-child(4) {
-    top: 180px;
-    left: 80px;
-  }
-
-  .orbital-element:nth-child(5) {
-    top: 110px;
-    left: 0px;
-  }
-
-  .orbital-element:nth-child(6) {
-    top: 30px;
-    left: 0px;
-  }
-
-  @keyframes orbit {
-    from {
-      transform: rotate(0deg) translateX(80px) rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg) translateX(80px) rotate(-360deg);
-    }
-  }
-
-  .intro-stats {
-    flex-direction: column;
-    gap: 20px;
-    text-align: center;
   }
 }
