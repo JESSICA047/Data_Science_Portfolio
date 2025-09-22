@@ -9,8 +9,9 @@ import NavBar from "./components/NavBar";
 import SideNavBar from "./components/SideNavBar";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-import DataMetrics from "./components/DataMetrics";
-import DataStories from "./components/DataStories";
+// DataMetrics and DataStories removed - Jessica will add these back when she has real projects and metrics
+// import DataMetrics from "./components/DataMetrics";
+// import DataStories from "./components/DataStories";
 import { StarsCanvas } from "./components/StarBackground";
 import "./App.css";
 import "./styles/Global.css";
@@ -27,9 +28,7 @@ function App() {
 
       <div id="content">
         <Intro />
-        <DataMetrics />
         <Projects />
-        <DataStories />
         <TechStack />
         <Experience />
         <About />

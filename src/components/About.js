@@ -57,47 +57,39 @@ const About = () => {
       <div className="about-content">
         <div className="about-description">
           <p ref={(el) => (textRefs.current[0] = el)}>
-            Hi, my name is Jessica and I have a passion for turning data into
-            meaningful insights. I graduated with a degree in Biochemistry in
-            2024, where I developed strong analytical skills working with
-            complex datasets and research methodologies.{" "}
+            Hi, I'm Jessica Adzoyi! I'm on an exciting journey to become a data
+            scientist. I graduated with a degree in Biochemistry and Molecular
+            Biology from the University of Health and Allied Sciences
+            (2021-2024), where I developed strong analytical thinking and
+            research skills working with complex scientific data.
           </p>
 
           <p ref={(el) => (textRefs.current[1] = el)}>
             Currently, I'm pursuing a Computer Science degree (2023-2026) to
-            build strong technical foundations for my data science career. I'm
-            also enrolled in WorldQuant University's Applied Data Science Lab
-            and actively learning through DataCamp to strengthen my skills in
-            Python, SQL, and data analysis.
-            <a
-              // href="https://www.credly.com/badges/76531ad7-80dc-4eea-8523-983d8b70f941/public_url"
-              target="_blank"
-            >
-              Computer Science degree (2023-2026)
-            </a>{" "}
-            to build strong technical foundations for my data science career.
-            I'm also enrolled in WorldQuant University's Applied Data Science
-            Lab and actively learning through DataCamp to strengthen my skills
-            in
-            <span className="highlight">Python, SQL, and data analysis.</span>
+            build the technical foundation I need for my data science career.
+            I'm also enrolled in WorldQuant University's Data Science Lab
+            (January-December 2025) and actively learning through DataCamp
+            courses to strengthen my skills in{" "}
+            <span className="highlight">
+              Excel, Python, and data analysis fundamentals.
+            </span>
           </p>
 
           <p ref={(el) => (textRefs.current[2] = el)}>
-            My dream is to become a Senior Data Scientist, and I'm taking it one
-            step at a time. I believe in the power of continuous learning and
-            building a strong foundation. This portfolio represents my journey
-            from a biology graduate to an aspiring data professional - and I
-            can't wait to fill it with amazing projects as I grow in this field!{" "}
-            {/* <span className="highlight">HTML, CSS & JavaScript</span> along the
-            way. I also have a background in{" "}
-            <span className="highlight"> Graphic Design. </span> */}
+            Right now, I'm working as a Data Analytics Intern, getting hands-on
+            experience with real data problems. My ultimate dream is to become a
+            Senior Data Scientist! I know I'm just starting out, but I'm
+            passionate about learning and I believe that every expert was once a
+            beginner. This portfolio will grow with me as I complete projects
+            and gain more skills.
           </p>
 
           <p ref={(el) => (textRefs.current[3] = el)}>
-            Outside of studying and learning data skills, I enjoy exploring new
-            technologies, reading about scientific breakthroughs, and planning
-            my next learning adventure. I'm excited about what the future holds
-            in data science!{" "}
+            When I'm not studying or working with data, I enjoy reading about
+            scientific breakthroughs, exploring new learning platforms, and
+            planning my next educational adventure. I'm genuinely excited about
+            what the future holds in data science, and I can't wait to make my
+            mark in this field!
           </p>
 
           {/* <p ref={(el) => (textRefs.current[4] = el)}>
@@ -113,7 +105,10 @@ const About = () => {
             <span role="img" aria-label="timeline">
               ðŸ—ºï¸{" "}
             </span>
-            View my <span className="about-timeline-highlight">educational journey</span>{" "}
+            View my{" "}
+            <span className="about-timeline-highlight">
+              educational journey
+            </span>{" "}
             to learn more about my unique journey into data science &rarr;
           </a>
         </p>

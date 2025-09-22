@@ -104,7 +104,7 @@ useEffect(() => {
 
 - Standard CRA scripts: `npm start`, `npm run build`
 - Deployment via gh-pages: `npm run deploy` pushes to master branch
-- Vercel hosting with domain: jessica-adzoyi.com
+- Vercel hosting with domain: jessicaadzoyi.dev
 
 ## Project-Specific Conventions
 

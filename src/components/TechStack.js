@@ -29,74 +29,34 @@ import { FaAws } from "react-icons/fa";
 gsap.registerPlugin(ScrollTrigger);
 
 const techStackData = [
-  // Core Data Science Tools
-  {
-    name: "Python",
-    icon: <SiPython />,
-    color: "#3776AB",
-    proficiency: 85,
-    category: "Programming",
-  },
-  {
-    name: "SQL",
-    icon: <SiMysql />,
-    color: "#00758F",
-    proficiency: 90,
-    category: "Database",
-  },
-  {
-    name: "Tableau",
-    icon: <SiTableau />,
-    color: "#E97627",
-    proficiency: 80,
-    category: "Visualization",
-  },
-
-  // Data Analysis & Processing
-  {
-    name: "Pandas",
-    icon: <SiPandas />,
-    color: "#150458",
-    proficiency: 85,
-    category: "Analysis",
-  },
-  {
-    name: "NumPy",
-    icon: <SiNumpy />,
-    color: "#013243",
-    proficiency: 80,
-    category: "Analysis",
-  },
+  // Current Skills - What Jessica knows right now
   {
     name: "Excel",
     icon: <RiFileExcel2Fill />,
     color: "#217346",
-    proficiency: 95,
+    proficiency: 65, // Basic level
     category: "Analysis",
   },
+  {
+    name: "Python",
+    icon: <SiPython />,
+    color: "#3776AB",
+    proficiency: 40, // Basic level - just learning
+    category: "Programming",
+  },
 
-  // Development Tools
+  // Currently Learning - Skills in progress
   {
-    name: "Jupyter",
-    icon: <SiJupyter />,
-    color: "#F37626",
-    proficiency: 90,
-    category: "Development",
+    name: "Data Analysis",
+    icon: <SiPandas />,
+    color: "#150458",
+    proficiency: 25, // Learning through courses
+    category: "Learning",
   },
-  {
-    name: "VS Code",
-    icon: <VscVscode />,
-    color: "#007ACC",
-    proficiency: 85,
-    category: "Development",
-  },
-  {
-    name: "Git",
-    icon: <SiGit />,
-    color: "#F05032",
-    proficiency: 75,
-    category: "Development",
-  },
+
+  // Future Goals - Skills to learn
+  // SQL, Tableau, PowerBI, Advanced Python, etc.
+  // Will add these as Jessica learns them!
 ];
 
 export default function TechStack() {

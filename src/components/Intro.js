@@ -206,16 +206,17 @@ const Intro = () => {
 
         <div className="intro-subtitle" ref={subtitleRef}>
           <span className="intro-subtitle-name">
-            Data Scientist & Analytics Professional{" "}
+            Aspiring Data Scientist & Current Analytics Intern{" "}
           </span>{" "}
-          transforming complex data into strategic business insights.{" "}
+          on a journey to transform data into meaningful insights.{" "}
         </div>
 
         <div className="intro-desc" ref={descRef}>
-          Combining scientific rigor with advanced analytics to solve real-world
-          business problems. Experienced in SQL, Python, and statistical
-          modeling with a proven track record of delivering actionable insights
-          that drive decision-making and business growth.{" "}
+          Biochemistry graduate currently pursuing Computer Science while
+          learning data analytics. Taking courses at DataCamp and enrolled in
+          WorldQuant University's Data Science Lab (2025). Passionate about
+          using data to solve problems and dreaming of becoming a Senior Data
+          Scientist.{" "}
         </div>
 
         <div className="intro-buttons" ref={buttonsRef}>
