@@ -190,7 +190,7 @@ const Intro = () => {
 
         <div className="intro-actions" ref={buttonsRef}>
           <a
-            href="/assets/resume.pdf"
+            // href="/assets/resume.pdf" 
             className="primary-button"
             target="_blank"
             rel="noopener noreferrer"
