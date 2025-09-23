@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +11,7 @@
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
             width: 1200px;
             height: 630px;
@@ -22,7 +23,7 @@
             overflow: hidden;
             color: white;
         }
-        
+
         .preview-container {
             display: flex;
             align-items: center;
@@ -32,12 +33,12 @@
             padding: 0 50px;
             gap: 80px;
         }
-        
+
         .content-section {
             flex: 1;
             max-width: 600px;
         }
-        
+
         .greeting {
             color: #64d98a;
             font-size: 24px;
@@ -45,42 +46,42 @@
             margin-bottom: 15px;
             font-family: 'Courier New', monospace;
         }
-        
+
         .name {
             font-size: 64px;
             font-weight: 700;
             margin-bottom: 20px;
             line-height: 1.1;
         }
-        
+
         .name-highlight {
             background: linear-gradient(135deg, #64d98a 0%, #64d98a 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
-        
+
         .tagline {
             font-size: 36px;
             font-weight: 600;
             color: #a8b2d1;
             margin-bottom: 10px;
         }
-        
+
         .subtitle {
             font-size: 20px;
             color: #64d98a;
             font-style: italic;
             margin-bottom: 30px;
         }
-        
+
         .description {
             font-size: 18px;
             color: #a8b2d1;
             line-height: 1.6;
             margin-bottom: 30px;
         }
-        
+
         .stats {
             display: flex;
             gap: 40px;
@@ -89,11 +90,11 @@
             border-top: 1px solid rgba(100, 217, 138, 0.3);
             border-bottom: 1px solid rgba(100, 217, 138, 0.3);
         }
-        
+
         .stat-item {
             text-align: center;
         }
-        
+
         .stat-number {
             font-size: 28px;
             font-weight: 700;
@@ -102,14 +103,14 @@
             display: block;
             margin-bottom: 5px;
         }
-        
+
         .stat-label {
             font-size: 12px;
             color: #a8b2d1;
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-        
+
         .visual-section {
             flex: 1;
             display: flex;
@@ -118,7 +119,7 @@
             position: relative;
             height: 400px;
         }
-        
+
         .robot-placeholder {
             width: 200px;
             height: 200px;
@@ -132,7 +133,7 @@
             position: relative;
             z-index: 2;
         }
-        
+
         .orbital-element {
             position: absolute;
             width: 50px;
@@ -147,58 +148,59 @@
             box-shadow: 0 0 15px rgba(100, 217, 138, 0.3);
             animation: orbit 20s linear infinite;
         }
-        
-        .orbital-element:nth-child(1) { 
+
+        .orbital-element:nth-child(1) {
             top: -25px;
             left: calc(50% - 25px);
             animation-delay: 0s;
         }
-        
-        .orbital-element:nth-child(2) { 
+
+        .orbital-element:nth-child(2) {
             top: 50px;
             right: -25px;
             animation-delay: -3.33s;
         }
-        
-        .orbital-element:nth-child(3) { 
+
+        .orbital-element:nth-child(3) {
             bottom: 50px;
             right: -25px;
             animation-delay: -6.66s;
         }
-        
-        .orbital-element:nth-child(4) { 
+
+        .orbital-element:nth-child(4) {
             bottom: -25px;
             left: calc(50% - 25px);
             animation-delay: -10s;
         }
-        
-        .orbital-element:nth-child(5) { 
+
+        .orbital-element:nth-child(5) {
             bottom: 50px;
             left: -25px;
             animation-delay: -13.33s;
         }
-        
-        .orbital-element:nth-child(6) { 
+
+        .orbital-element:nth-child(6) {
             top: 50px;
             left: -25px;
             animation-delay: -16.66s;
         }
-        
+
         @keyframes orbit {
             from {
                 transform: rotate(0deg) translateX(120px) rotate(0deg);
             }
+
             to {
                 transform: rotate(360deg) translateX(120px) rotate(-360deg);
             }
         }
-        
+
         .orbital-container {
             position: relative;
             width: 300px;
             height: 300px;
         }
-        
+
         .learning-badge {
             position: absolute;
             bottom: -40px;
@@ -212,54 +214,57 @@
             color: #64d98a;
             white-space: nowrap;
         }
-        
+
         .floating-elements {
             position: absolute;
             width: 100%;
             height: 100%;
             pointer-events: none;
         }
-        
+
         .floating-element {
             position: absolute;
             font-size: 30px;
             opacity: 0.6;
             animation: float 6s ease-in-out infinite;
         }
-        
+
         .floating-element:nth-child(1) {
             top: 10%;
             left: 10%;
             animation-delay: 0s;
         }
-        
+
         .floating-element:nth-child(2) {
             top: 15%;
             right: 15%;
             animation-delay: 1.5s;
         }
-        
+
         .floating-element:nth-child(3) {
             bottom: 20%;
             left: 5%;
             animation-delay: 3s;
         }
-        
+
         .floating-element:nth-child(4) {
             bottom: 10%;
             right: 10%;
             animation-delay: 4.5s;
         }
-        
+
         @keyframes float {
-            0%, 100% {
+
+            0%,
+            100% {
                 transform: translateY(0px) rotate(0deg);
             }
+
             50% {
                 transform: translateY(-15px) rotate(3deg);
             }
         }
-        
+
         .domain-badge {
             position: absolute;
             bottom: 30px;
@@ -274,6 +279,7 @@
         }
     </style>
 </head>
+
 <body>
     <div class="preview-container">
         <div class="content-section">
@@ -282,7 +288,8 @@
             <div class="tagline">Turning Data into Stories</div>
             <div class="subtitle">📊 One Analysis at a Time</div>
             <div class="description">
-                Biochemistry graduate turned <strong>aspiring data scientist</strong> on an exciting journey of discovery.
+                Biochemistry graduate turned <strong>aspiring data scientist</strong> on an exciting journey of
+                discovery.
             </div>
             <div class="stats">
                 <div class="stat-item">
@@ -299,7 +306,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="visual-section">
             <div class="floating-elements">
                 <div class="floating-element">📈</div>
@@ -307,7 +314,7 @@
                 <div class="floating-element">🎯</div>
                 <div class="floating-element">💡</div>
             </div>
-            
+
             <div class="orbital-container">
                 <div class="orbital-element">🎯</div>
                 <div class="orbital-element">📊</div>
@@ -315,14 +322,15 @@
                 <div class="orbital-element">🧠</div>
                 <div class="orbital-element">⚡</div>
                 <div class="orbital-element">🔍</div>
-                
+
                 <div class="robot-placeholder">🤖</div>
-                
+
                 <div class="learning-badge">🚀 Currently Learning</div>
             </div>
         </div>
     </div>
-    
+
     <div class="domain-badge">jessicaadzoyi.dev</div>
 </body>
+
 </html>
