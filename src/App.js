@@ -9,15 +9,13 @@ import NavBar from "./components/NavBar";
 import SideNavBar from "./components/SideNavBar";
 import Projects from "./components/Projects";
 import Contact from "./components/Contact";
-// DataMetrics and DataStories removed - Jessica will add these back when she has real projects and metrics
-// import DataMetrics from "./components/DataMetrics";
-// import DataStories from "./components/DataStories";
 import { StarsCanvas } from "./components/StarBackground";
 import "./App.css";
 import "./styles/Global.css";
 
 function App() {
   const [showStars, setShowStars] = useState(true);
+
   return (
     <div className="App">
       {showStars && <StarsCanvas />}

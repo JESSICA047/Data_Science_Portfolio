@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import "../styles/Intro.css";
 import AnimatedRobot from "./AnimatedRobot";
 import Icon from "./Icons";
+import ComingSoon from "./ComingSoon";
 import { gsap } from "gsap";
 
 const Intro = () => {
@@ -15,6 +16,10 @@ const Intro = () => {
   const orbitRef = useRef(null);
   const hasRunRef = useRef(false);
 
+  // Coming Soon modal state
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  const [modalContent, setModalContent] = useState({});
+
   const funFacts = [
     "🧪 From lab coats to code commits",
     "📚 Currently mastering SQL & Python",
@@ -22,6 +27,12 @@ const Intro = () => {
     "☕ Powered by curiosity & coffee",
     "🌟 Learning something new every day",
   ];
+
+  // Handle Coming Soon modal
+  const handleComingSoon = (title, message) => {
+    setModalContent({ title, message });
+    setShowComingSoon(true);
+  };
 
   useEffect(() => {
     if (hasRunRef.current) return;
@@ -143,95 +154,107 @@ const Intro = () => {
   }, []);
 
   return (
-    <div className="intro-section">
-      <div className="intro-content">
-        <div className="intro-header" ref={headerRef}>
-          <span className="intro-greeting">👋 Hi there, I'm</span>
-          <h1 className="intro-name">
-            Jessica <span className="name-highlight">Adzoyi</span>
-          </h1>
-        </div>
-
-        <div className="intro-tagline" ref={taglineRef}>
-          <span className="tagline-primary">Turning Data into Stories</span>
-          <span className="tagline-secondary">📊 One Analysis at a Time</span>
-        </div>
-
-        <div className="intro-description" ref={descRef}>
-          <p>
-            Biochemistry graduate turned{" "}
-            <strong>aspiring data scientist</strong> on an exciting journey of
-            discovery. Currently pursuing Computer Science while diving deep
-            into analytics as an intern and through intensive learning at
-            DataCamp and WorldQuant University.
-          </p>
-          <p>
-            My mission? Transform complex datasets into clear, actionable
-            insights that drive meaningful decisions. Every day brings new
-            opportunities to learn, grow, and get closer to my dream of becoming
-            a Senior Data Scientist.
-          </p>
-        </div>
-
-        <div className="intro-stats" ref={statsRef}>
-          <div className="stat-item">
-            <span className="stat-number">100%</span>
-            <span className="stat-label">Enthusiasm</span>
+    <>
+      <div className="intro-section">
+        <div className="intro-content">
+          <div className="intro-header" ref={headerRef}>
+            <span className="intro-greeting">👋 Hi there, I'm</span>
+            <h1 className="intro-name">
+              Jessica <span className="name-highlight">Adzoyi</span>
+            </h1>
           </div>
-          <div className="stat-item">
-            <span className="stat-number">24/7</span>
-            <span className="stat-label">Learning Mode</span>
+
+          <div className="intro-tagline" ref={taglineRef}>
+            <span className="tagline-primary">Turning Data into Stories</span>
+            <span className="tagline-secondary">📊 One Analysis at a Time</span>
           </div>
-          <div className="stat-item">
-            <span className="stat-number">∞</span>
-            <span className="stat-label">Growth Mindset</span>
+
+          <div className="intro-description" ref={descRef}>
+            <p>
+              Biochemistry graduate turned{" "}
+              <strong>aspiring data scientist</strong> on an exciting journey of
+              discovery. Currently pursuing Computer Science while diving deep
+              into analytics as an intern and through intensive learning at
+              DataCamp and WorldQuant University.
+            </p>
+            <p>
+              My mission? Transform complex datasets into clear, actionable
+              insights that drive meaningful decisions. Every day brings new
+              opportunities to learn, grow, and get closer to my dream of
+              becoming a Senior Data Scientist.
+            </p>
+          </div>
+
+          <div className="intro-stats" ref={statsRef}>
+            <div className="stat-item">
+              <span className="stat-number">100%</span>
+              <span className="stat-label">Enthusiasm</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">24/7</span>
+              <span className="stat-label">Learning Mode</span>
+            </div>
+            <div className="stat-item">
+              <span className="stat-number">∞</span>
+              <span className="stat-label">Growth Mindset</span>
+            </div>
+          </div>
+
+          <div className="intro-actions" ref={buttonsRef}>
+            <button
+              className="primary-button"
+              onClick={() =>
+                handleComingSoon(
+                  "Resume Coming Soon!",
+                  "I'm currently crafting a professional resume that reflects my authentic learning journey. It will be available once I've completed more of my data science coursework and built some solid projects!"
+                )
+              }
+            >
+              <Icon name="Document" className="button-icon" />
+              View My Resume
+            </button>
+            <a href="#projects" className="secondary-button">
+              <Icon name="Code" className="button-icon" />
+              Explore My Work
+            </a>
           </div>
         </div>
 
-        <div className="intro-actions" ref={buttonsRef}>
-          <a
-            // href="/assets/resume.pdf" 
-            className="primary-button"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon name="Document" className="button-icon" />
-            View My Resume
-          </a>
-          <a href="#projects" className="secondary-button">
-            <Icon name="Code" className="button-icon" />
-            Explore My Work
-          </a>
+        <div className="intro-visual">
+          <div className="data-visuals" ref={dataVisualsRef}>
+            <div className="visual-element chart-1">📈</div>
+            <div className="visual-element chart-2">📊</div>
+            <div className="visual-element chart-3">🎯</div>
+            <div className="visual-element chart-4">💡</div>
+          </div>
+
+          {/* New Orbital Container */}
+          <div className="orbital-container" ref={orbitRef}>
+            <div className="orbital-element orbit-1">🎯</div>
+            <div className="orbital-element orbit-2">📊</div>
+            <div className="orbital-element orbit-3">💻</div>
+            <div className="orbital-element orbit-4">🧠</div>
+            <div className="orbital-element orbit-5">⚡</div>
+            <div className="orbital-element orbit-6">🔍</div>
+          </div>
+
+          <div className="robot-container" ref={robotRef}>
+            <AnimatedRobot />
+          </div>
+
+          <div className="learning-badge">
+            <span>🚀 Currently Learning</span>
+          </div>
         </div>
       </div>
 
-      <div className="intro-visual">
-        <div className="data-visuals" ref={dataVisualsRef}>
-          <div className="visual-element chart-1">📈</div>
-          <div className="visual-element chart-2">📊</div>
-          <div className="visual-element chart-3">🎯</div>
-          <div className="visual-element chart-4">💡</div>
-        </div>
-
-        {/* New Orbital Container */}
-        <div className="orbital-container" ref={orbitRef}>
-          <div className="orbital-element orbit-1">🎯</div>
-          <div className="orbital-element orbit-2">📊</div>
-          <div className="orbital-element orbit-3">💻</div>
-          <div className="orbital-element orbit-4">🧠</div>
-          <div className="orbital-element orbit-5">⚡</div>
-          <div className="orbital-element orbit-6">🔍</div>
-        </div>
-
-        <div className="robot-container" ref={robotRef}>
-          <AnimatedRobot />
-        </div>
-
-        <div className="learning-badge">
-          <span>🚀 Currently Learning</span>
-        </div>
-      </div>
-    </div>
+      <ComingSoon
+        isOpen={showComingSoon}
+        onClose={() => setShowComingSoon(false)}
+        title={modalContent.title}
+        message={modalContent.message}
+      />
+    </>
   );
 };
 

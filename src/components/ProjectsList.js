@@ -10,9 +10,14 @@ const ProjectsList = () => {
   const [value, setValue] = useState(0);
   const [isHorizontal, setIsHorizontal] = useState(window.innerWidth < 600);
 
-  // Create keys array with Project Blogs as the first item
+  // Create keys array with Project Blogs and new sections
   const sectionKeys = Object.keys(projectsData);
-  const keys = ["Project Blogs", ...sectionKeys];
+  const keys = [
+    "Project Blogs",
+    "Data Metrics",
+    "Data Stories",
+    ...sectionKeys,
+  ];
 
   const contentRef = useRef(null);
   const oldValueRef = useRef(value);
@@ -49,9 +54,65 @@ const ProjectsList = () => {
       return (
         <>
           <span className="projectlist-section-title">Project Blogs</span>
-          <div className="projectlist-duration">Articles & Case Studies</div>
-          <div className="project-blogs-content">
-            <ProjectBlogs />
+          <div className="projectlist-duration">Coming Soon</div>
+          <div className="coming-soon-content">
+            <div className="coming-soon-message">
+              <h3>📝 Blog Posts in Development</h3>
+              <p>
+                I'm preparing to share my learning journey, insights, and data
+                science discoveries through engaging blog posts and case
+                studies.
+              </p>
+              <div className="learning-status">
+                <span className="status-badge">✍️ Writing Content</span>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    if (key === "Data Metrics") {
+      return (
+        <>
+          <span className="projectlist-section-title">
+            Data Metrics Dashboard
+          </span>
+          <div className="projectlist-duration">Coming Soon</div>
+          <div className="coming-soon-content">
+            <div className="coming-soon-message">
+              <h3>📊 Analytics Dashboard in Development</h3>
+              <p>
+                I'm working on building comprehensive data metrics and
+                visualizations to showcase my analytical capabilities and real
+                project outcomes.
+              </p>
+              <div className="learning-status">
+                <span className="status-badge">🔧 Building Dashboard</span>
+              </div>
+            </div>
+          </div>
+        </>
+      );
+    }
+
+    if (key === "Data Stories") {
+      return (
+        <>
+          <span className="projectlist-section-title">Data Stories & Blog</span>
+          <div className="projectlist-duration">Coming Soon</div>
+          <div className="coming-soon-content">
+            <div className="coming-soon-message">
+              <h3>📚 Data Stories in Development</h3>
+              <p>
+                I'm working on creating authentic content about my data science
+                learning journey. Expect posts about SQL discoveries, Python
+                challenges, and real-world project insights.
+              </p>
+              <div className="learning-status">
+                <span className="status-badge">📖 Crafting Stories</span>
+              </div>
+            </div>
           </div>
         </>
       );
