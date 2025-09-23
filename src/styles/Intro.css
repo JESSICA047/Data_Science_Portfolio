@@ -141,8 +141,8 @@
   display: inline-flex;
   align-items: center;
   padding: 14px 28px;
-  background: linear-gradient(135deg, 0%, #000000ff 100%);
-  color: var(--navy);
+  background: transparent;
+  color: #fff;
   border: none;
   border-radius: 8px;
   font-size: 16px;
